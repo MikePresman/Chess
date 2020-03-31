@@ -47,24 +47,38 @@ public class ChessBoardModel {
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
             for (int tile = 0; tile < 8; tile++) {
+                if (chessBoardLayout[row][tile] == ChessPiece.NONE){
+                    continue;
+                }
+
                 String imageName = "src/assets/" + chessBoardLayout[row][tile] + ".png";
                 ImageView imageView;
+
+
 
                 try{
                     FileInputStream input = new FileInputStream(imageName);
                     Image image = new Image(input);
                     imageView = new ImageView(image);
                 }catch (FileNotFoundException e){
-                    System.out.println("Chess Piece not Found to Draw"); //should use logging later
+                    System.out.println("Chess Piece not Found to Draw" + imageName.toString()); //should use logging later
                     return;
                 }
 
-                imageView.setX(500/8/5);
-                imageView.setY(500/8/5);
+                double currentTileX = tile * 600/8; //current tile spot, starting at 0
+                imageView.setX(currentTileX + (24 / 2));
 
+                double currentTileY = row * 600 /8;
+                imageView.setY(currentTileY + (24/2));
+
+                this.canvas.getChildren().add(imageView);
 
             }
         }
+    }
+
+    public Pane getCanvas(){
+        return this.canvas;
     }
 
 

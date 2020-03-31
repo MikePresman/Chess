@@ -32,13 +32,31 @@ public class Main extends Application {
         Pane canvas = new Pane();
         ChessBoardModel game = new ChessBoardModel(canvas);
         game.drawPiecesOnBoard();
+        canvas = game.getCanvas();
+
+
+        /*
+        FileInputStream input = new FileInputStream("src/assets/BLACK_BISHOP.png");
+        Image image = new Image(input);
+        ImageView imageView = new ImageView(image);
+
+        double currentTileX = 2 * 600/8; //current tile spot, starting at 0
+        imageView.setX(currentTileX + (24 / 2));
+
+
+        double currentTileY = 0 * 600 /8;
+        imageView.setY(currentTileY + (24/2));
+        canvas.getChildren().add(imageView);
+        */
+
+
 
 
 
 
 
         //setting the init scene - can not resize the stage
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.setScene(new Scene(canvas, 600, 600));
         primaryStage.show();
 
