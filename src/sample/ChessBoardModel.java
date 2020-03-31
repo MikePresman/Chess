@@ -1,8 +1,22 @@
 package sample;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+enum ChessPiece{
+    BLACK_PAWN, BLACK_ROOK, BLACK_KNIGHT, BLACK_QUEEN, BLACK_KING, BLACK_BISHOP,
+
+    WHITE_PAWN, WHITE_ROOK, WHITE_KNIGHT, WHITE_QUEEN, WHITE_KING, WHITE_BISHOP,
+
+    NONE
+}
+
 
 public class ChessBoardModel {
     private final double CHESS_BOARD_HEIGHT = 600;
@@ -11,9 +25,48 @@ public class ChessBoardModel {
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
 
-    public ChessBoardModel() {
+    private Pane canvas;
 
+    private ChessPiece[][] chessBoardLayout = {
+                                                {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
+                                                {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
+                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+                                                {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN},
+                                                {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
+                                            };
+
+
+    public ChessBoardModel(Pane canvas) {
+        drawBoard(canvas);
     }
+
+
+    public void drawPiecesOnBoard() {
+        for (int row = 0; row < 8; row++) {
+            for (int tile = 0; tile < 8; tile++) {
+                String imageName = "src/assets/" + chessBoardLayout[row][tile] + ".png";
+                ImageView imageView;
+
+                try{
+                    FileInputStream input = new FileInputStream(imageName);
+                    Image image = new Image(input);
+                    imageView = new ImageView(image);
+                }catch (FileNotFoundException e){
+                    System.out.println("Chess Piece not Found to Draw"); //should use logging later
+                    return;
+                }
+
+                imageView.setX(500/8/5);
+                imageView.setY(500/8/5);
+
+
+            }
+        }
+    }
+
 
 
 
@@ -64,6 +117,8 @@ public class ChessBoardModel {
         for (Rectangle r: grayTiles){
             canvas.getChildren().add(r);
         }
+
+        this.canvas = canvas;
     }
 
 

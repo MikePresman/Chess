@@ -2,40 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/bbishop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/bking.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/bknight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/bpawn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/bqueen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/brook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/wbishop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/wking.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/wknight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/wpawn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/wqueen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/assets/wrook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/sample/ChessPiece.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/sample/Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/sample/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ant.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Chess.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bbishop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bking.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bknight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bpawn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bqueen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/brook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/wbishop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/wking.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/wknight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/wpawn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/wqueen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/wrook.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +66,19 @@
       <option name="presentableId" value="Default" />
       <updated>1585581393952</updated>
     </task>
+    <task id="LOCAL-00001" summary="image implementaton of chess pieces">
+      <created>1585620080200</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585620080200</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="image implementaton of chess pieces" />
+    <option name="LAST_COMMIT_MESSAGE" value="image implementaton of chess pieces" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="362" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585591319922">
@@ -95,33 +89,41 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585591317860" />
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1585620078482">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585620078482" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2517" height="151" key="GridCell.Tab.0.bottom" timestamp="1585612950945">
+    <state width="2517" height="306" key="GridCell.Tab.0.bottom" timestamp="1585690239853">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2517" height="151" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585612950945" />
-    <state width="2517" height="151" key="GridCell.Tab.0.center" timestamp="1585612950944">
+    <state width="2517" height="306" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585690239853" />
+    <state width="2517" height="306" key="GridCell.Tab.0.center" timestamp="1585690239852">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2517" height="151" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585612950944" />
-    <state width="2517" height="151" key="GridCell.Tab.0.left" timestamp="1585612950944">
+    <state width="2517" height="306" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585690239852" />
+    <state width="2517" height="306" key="GridCell.Tab.0.left" timestamp="1585690239852">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2517" height="151" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585612950944" />
-    <state width="2517" height="151" key="GridCell.Tab.0.right" timestamp="1585612950945">
+    <state width="2517" height="306" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585690239852" />
+    <state width="2517" height="306" key="GridCell.Tab.0.right" timestamp="1585690239853">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2517" height="151" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585612950945" />
+    <state width="2517" height="306" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585690239853" />
     <state x="783" y="350" key="SettingsEditor" timestamp="1585591290777">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="783" y="350" key="SettingsEditor/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585591290777" />
-    <state x="987" y="532" key="com.intellij.ide.util.TipDialog" timestamp="1585605193495">
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1585620087025">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="987" y="532" key="com.intellij.ide.util.TipDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585605193495" />
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585620087025" />
+    <state x="987" y="532" key="com.intellij.ide.util.TipDialog" timestamp="1585672835135">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="987" y="532" key="com.intellij.ide.util.TipDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585672835135" />
   </component>
 </project>

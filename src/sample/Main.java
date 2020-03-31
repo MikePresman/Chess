@@ -30,17 +30,12 @@ public class Main extends Application {
 
         //init chessboard drawing
         Pane canvas = new Pane();
-        ChessBoardModel newGame = new ChessBoardModel();
-        newGame.drawBoard(canvas);
+        ChessBoardModel game = new ChessBoardModel(canvas);
+        game.drawPiecesOnBoard();
 
-        //image
-        FileInputStream input = new FileInputStream("src/assets/bbishop.png");
-        Image image = new Image(input);
-        ImageView imageView = new ImageView(image);
-        //centered
-        imageView.setX(500/8/5);
-        imageView.setY(500/8/5);
-        canvas.getChildren().add(imageView);
+
+
+
 
         //setting the init scene - can not resize the stage
         primaryStage.setResizable(false);

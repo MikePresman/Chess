@@ -1,14 +1,6 @@
 package sample;
 
 
-enum ChessPiece{
-    PAWN,
-    ROOK,
-    KNIGHT,
-    QUEEN,
-    KING,
-    BISHOP
-}
 
 
 
