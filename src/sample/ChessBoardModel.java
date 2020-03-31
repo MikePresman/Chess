@@ -5,32 +5,23 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class ChessBoardModel {
-    private double paneHeight = 1000;
-    private double paneWidth = 1000;
+    private final double CHESS_BOARD_HEIGHT = 600;
+    private final double CHESS_BOARD_WIDTH = 600;
 
-    private Rectangle[] brownTiles = new Rectangle[32];
+    Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
 
     public ChessBoardModel() {
 
     }
 
-    public void setPaneHeight(double height){
-        this.paneHeight = height;
-    }
-
-    public void setPaneWidth(double width){
-        this.paneWidth = width;
-    }
 
 
 
-    public void drawBoard(Pane canvas, double paneHeight, double paneWidth) {
-        double tileWidth = paneWidth / 8;
-        double tileHeight = paneHeight / 8;
+    public void drawBoard(Pane canvas) {
+        double tileWidth = CHESS_BOARD_WIDTH / 8;
+        double tileHeight = CHESS_BOARD_HEIGHT / 8;
 
-        System.out.println(paneHeight);
-        System.out.println(paneWidth);
         int tileXPosition = 0;
         int tileYPosition = 0;
         int row = 1;
@@ -42,18 +33,18 @@ public class ChessBoardModel {
                 brownTile.setFill(Color.GRAY);
                 brownTiles[tile] = brownTile;
                 tileXPosition += tileWidth;
-                Rectangle grayTile = new Rectangle(tileXPosition, tileYPosition, 125, 125);
+                Rectangle grayTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
                 grayTile.setFill(Color.WHITE);
                 grayTiles[tile] = grayTile;
                 tileXPosition += tileWidth;
 
             } else {
-                Rectangle grayTile = new Rectangle(tileXPosition, tileYPosition, 125, 125);
+                Rectangle grayTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
                 grayTile.setFill(Color.WHITE);
                 grayTiles[tile] = grayTile;
                 tileXPosition += tileWidth;
 
-                Rectangle brownTile = new Rectangle(tileXPosition, tileYPosition, 125, 125);
+                Rectangle brownTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
                 brownTile.setFill(Color.GRAY);
                 brownTiles[tile] = brownTile;
                 tileXPosition += tileWidth;

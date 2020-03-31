@@ -1,16 +1,21 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 
 
 public class Main extends Application {
@@ -25,33 +30,24 @@ public class Main extends Application {
 
         //init chessboard drawing
         Pane canvas = new Pane();
-        double paneHeight = 1000;
-        double paneWidth = 1000;
         ChessBoardModel newGame = new ChessBoardModel();
-        newGame.drawBoard(canvas, paneHeight, paneWidth);
+        newGame.drawBoard(canvas);
 
-        //setting the init scene
-        primaryStage.setScene(new Scene(canvas, 1000, 1000));
+        //image
+        FileInputStream input = new FileInputStream("src/assets/bbishop.png");
+        Image image = new Image(input);
+        ImageView imageView = new ImageView(image);
+        //centered
+        imageView.setX(500/8/5);
+        imageView.setY(500/8/5);
+        canvas.getChildren().add(imageView);
+
+        //setting the init scene - can not resize the stage
+        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(canvas, 600, 600));
         primaryStage.show();
 
-
-
-        //Listener for window width resize
-        primaryStage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            newGame.drawBoard(canvas, paneHeight, (double) newVal);
-
-        });
-
-
-
-
-        //Listener for window height resize
-        primaryStage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            newGame.drawBoard(canvas, (double) newVal, paneWidth);
-
-        });
-
-
+        //create a button + or - to resize
 
         while(Game.gameOver != false){
             //ask player to make their next move
@@ -62,4 +58,3 @@ public class Main extends Application {
         }
     }
 }
-
