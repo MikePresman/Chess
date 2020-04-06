@@ -167,26 +167,27 @@ public class ChessBoardModel {
             }
         }
 
+        //remove the current tile selected to replace it with one that has an outline
         canvas.getChildren().remove(getIndex);
 
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
         String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length()-1);
 
-        //"adding" i.e. modifying the rectangle
+        //"modifying" i.e adding the tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
         r.setFill(Color.web(tileColor));
         r.setStroke(Color.RED);
         canvas.getChildren().add(r);
-        drawPiecesOnBoard();
 
+
+        drawPiecesOnBoard(); //draw pieces on board to prevent the pieces to be overdrawn
         this.pieceSelected = true;
 
 
 
 
 
-        System.out.println(getTileInfo);
 
 
 
