@@ -133,6 +133,8 @@ public class ChessBoardModel {
         this.canvas = canvas;
     }
 
+
+    //BUG: When clicking on piece that was previously selected
     public void getSelectedPiece(MouseEvent m){
         if (!Game.gameRunning){
             return;
@@ -141,6 +143,7 @@ public class ChessBoardModel {
         //if we already have a piece selected redraw board to get rid of the selected piece
         if (pieceSelected){
             drawBoard(canvas);
+            this.pieceSelected = false;
         }
 
 
@@ -151,24 +154,28 @@ public class ChessBoardModel {
         this.pieceSelectedY = pieceSelectedY;
 
 
-
         //Get the position of the tile clicked so can modify tile and make it apparent that it has been selected
         int pieceSelectedX = ((int) (Math.floor(m.getX() / 75))) * 75;
         int pieceSelectedY = ((int) (Math.floor(m.getY() / 75))) * 75;
 
         //the tiles are filled in the canvas from index 0 to 63, then the images go from 64 + 16
         String getTileInfo = "";
-        int getIndex = -1;
-        for (int i = 0; i < 64; i++){
+        int getIndex = -1; //BUG here
+        for (int i = 0; i < canvas.getChildren().size(); i++){
             Node n = canvas.getChildren().get(i);
             if (n.toString().contains("Rectangle[x=" + (double) pieceSelectedX + ", y=" + (double) pieceSelectedY)){
                 getIndex = i;
                 getTileInfo = n.toString();
             }
+
         }
 
         //remove the current tile selected to replace it with one that has an outline
         canvas.getChildren().remove(getIndex);
+
+
+
+
 
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
