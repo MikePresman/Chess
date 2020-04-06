@@ -1,12 +1,15 @@
 package sample;
 
-
+enum Player{
+    WHITE,
+    BLACK
+}
 
 
 
 public class Game {
-    public static boolean gameOver = false;
-
+    public static boolean gameRunning = true;
+    private static Player currentPlayer = Player.WHITE;
 
     public Game(){
 
@@ -15,9 +18,5 @@ public class Game {
     public void movePiece(){
 
     }
-
-
-
-
 
 }
