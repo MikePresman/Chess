@@ -9,7 +9,7 @@ enum Player{
 
 public class Game {
     public static boolean gameRunning = true;
-    private static Player currentPlayer = Player.WHITE;
+    public static Player currentPlayer = Player.BLACK;
 
     public Game(){
 

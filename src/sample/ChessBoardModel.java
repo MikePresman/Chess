@@ -27,9 +27,12 @@ public class ChessBoardModel {
     private final double CHESS_BOARD_HEIGHT = 600;
     private final double CHESS_BOARD_WIDTH = 600;
 
-    private boolean pieceSelected = false;
+    public boolean pieceSelected = false;
     private int pieceSelectedX;
     private int pieceSelectedY;
+    private int pieceSelectedIndex;
+
+
 
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
@@ -79,6 +82,42 @@ public class ChessBoardModel {
         }
     }
 
+    public boolean isBlackPiece(int givenTile, int givenRow){
+        switch(this.chessBoardLayout[givenRow][givenTile]){
+            case BLACK_PAWN:
+            case BLACK_QUEEN:
+            case BLACK_BISHOP:
+            case BLACK_KING:
+            case BLACK_ROOK:
+            case BLACK_KNIGHT:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public boolean isWhitePiece(int givenTile, int givenRow){
+        switch(this.chessBoardLayout[givenRow][givenTile]){
+            case WHITE_PAWN:
+            case WHITE_QUEEN:
+            case WHITE_BISHOP:
+            case WHITE_KING:
+            case WHITE_ROOK:
+            case WHITE_KNIGHT:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public boolean isEmptyTile(int givenTile, int givenRow){
+        if (this.chessBoardLayout[givenRow][givenTile] == ChessPiece.NONE){
+            return true;
+        }
+        return false;
+    }
+
+
     public Pane getCanvas(){
         return this.canvas;
     }
@@ -111,6 +150,7 @@ public class ChessBoardModel {
 
                 Rectangle brownTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
                 brownTile.setFill(Color.GRAY);
+
                 brownTiles[tile] = brownTile;
                 tileXPosition += tileWidth;
             }
@@ -134,48 +174,59 @@ public class ChessBoardModel {
     }
 
 
-    //BUG: When clicking on piece that was previously selected
+    //add check to see if the user can click on that spot - i.e. its their piece
+    //show where they can move based on what piece they clicked
     public void getSelectedPiece(MouseEvent m){
         if (!Game.gameRunning){
             return;
         }
 
-        //if we already have a piece selected redraw board to get rid of the selected piece
+        //get the indicies of the piece clicked for the array
+        int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
+        int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY()/75));
+
+
+        //here we are checking if they can click that space
+        if (isEmptyTile(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)){return;}
+        if (Game.currentPlayer == Player.BLACK && isWhitePiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)){
+            return;
+        }else if(Game.currentPlayer == Player.WHITE && isBlackPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)){
+            return;
+        }
+
+
+        //if we already have a piece selected, here we redraw board and pieces to get remove the other highlight of the piece selected, better way of handling this is figuring out which piece is selected
         if (pieceSelected){
             drawBoard(canvas);
+            drawPiecesOnBoard();
             this.pieceSelected = false;
         }
 
 
-        //get the indicies of the piece clicked for the array
-        int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
-        int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY()/75));
-        this.pieceSelectedX = pieceSelectedX;
-        this.pieceSelectedY = pieceSelectedY;
+
 
 
         //Get the position of the tile clicked so can modify tile and make it apparent that it has been selected
         int pieceSelectedX = ((int) (Math.floor(m.getX() / 75))) * 75;
         int pieceSelectedY = ((int) (Math.floor(m.getY() / 75))) * 75;
 
+        this.pieceSelectedX = pieceSelectedX;
+        this.pieceSelectedY = pieceSelectedY;
+
         //the tiles are filled in the canvas from index 0 to 63, then the images go from 64 + 16
         String getTileInfo = "";
-        int getIndex = -1; //BUG here
+        int getIndex = -1;
         for (int i = 0; i < canvas.getChildren().size(); i++){
             Node n = canvas.getChildren().get(i);
             if (n.toString().contains("Rectangle[x=" + (double) pieceSelectedX + ", y=" + (double) pieceSelectedY)){
                 getIndex = i;
                 getTileInfo = n.toString();
+                break;
             }
-
         }
 
         //remove the current tile selected to replace it with one that has an outline
         canvas.getChildren().remove(getIndex);
-
-
-
-
 
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
@@ -188,8 +239,18 @@ public class ChessBoardModel {
         canvas.getChildren().add(r);
 
 
-        drawPiecesOnBoard(); //draw pieces on board to prevent the pieces to be overdrawn
-        this.pieceSelected = true;
+
+        //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
+        for (int i = 0; i < canvas.getChildren().size(); i++){
+            if (canvas.getChildren().get(i) instanceof ImageView){
+                canvas.getChildren().remove(i);
+            }
+        }
+        drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
+
+
+        this.pieceSelected = true; //we have selected a piece
+        this.pieceSelectedIndex = getIndex;
 
 
 

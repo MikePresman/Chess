@@ -4,7 +4,11 @@
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586208779415</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed bug in getSelectedPiece">
+      <created>1586211787617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586211787617</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -96,7 +107,8 @@
     <MESSAGE value="chess pieces drawn" />
     <MESSAGE value="selected piece drawn" />
     <MESSAGE value="Pieces Drawn on what was selected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pieces Drawn on what was selected" />
+    <MESSAGE value="Fixed bug in getSelectedPiece" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in getSelectedPiece" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="362" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585591319922">
@@ -111,30 +123,30 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585591317860" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1586208778296">
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1586211786508">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586208778296" />
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586211786508" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2561" height="151" key="GridCell.Tab.0.bottom" timestamp="1586211755660">
+    <state width="2561" height="151" key="GridCell.Tab.0.bottom" timestamp="1586228765151">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586211755660" />
-    <state width="2561" height="151" key="GridCell.Tab.0.center" timestamp="1586211755660">
+    <state width="2561" height="151" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765151" />
+    <state width="2561" height="151" key="GridCell.Tab.0.center" timestamp="1586228765150">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586211755660" />
-    <state width="2561" height="151" key="GridCell.Tab.0.left" timestamp="1586211755660">
+    <state width="2561" height="151" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765150" />
+    <state width="2561" height="151" key="GridCell.Tab.0.left" timestamp="1586228765150">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586211755660" />
-    <state width="2561" height="151" key="GridCell.Tab.0.right" timestamp="1586211755660">
+    <state width="2561" height="151" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765150" />
+    <state width="2561" height="151" key="GridCell.Tab.0.right" timestamp="1586228765150">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586211755660" />
+    <state width="2561" height="151" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765150" />
     <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1586207521920">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -163,6 +175,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="987" y="532" key="com.intellij.ide.util.TipDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585672835135" />
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1586226082504">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="943" y="317" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586226082504" />
     <state x="1002" y="622" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586055545425">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
