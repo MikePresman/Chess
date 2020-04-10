@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.SQLOutput;
+import java.util.Iterator;
 
 enum ChessPiece{
     BLACK_PAWN, BLACK_ROOK, BLACK_KNIGHT, BLACK_QUEEN, BLACK_KING, BLACK_BISHOP,
@@ -28,11 +29,12 @@ public class ChessBoardModel {
     private final double CHESS_BOARD_WIDTH = 600;
 
     public boolean pieceSelected = false;
+    public int chessPieceTileIndex;
+    public int chessPieceRowIndex;
     private int pieceSelectedX;
     private int pieceSelectedY;
     private int pieceSelectedIndex;
-
-
+    private int selectedPieceCanvasIndex;
 
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
@@ -117,7 +119,6 @@ public class ChessBoardModel {
         return false;
     }
 
-
     public Pane getCanvas(){
         return this.canvas;
     }
@@ -176,35 +177,37 @@ public class ChessBoardModel {
 
     //add check to see if the user can click on that spot - i.e. its their piece
     //show where they can move based on what piece they clicked
-    public void getSelectedPiece(MouseEvent m){
-        if (!Game.gameRunning){
+    public void getSelectedPiece(MouseEvent m) {
+
+        if (!Game.gameRunning) {
             return;
         }
 
         //get the indicies of the piece clicked for the array
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
-        int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY()/75));
+        int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
+        this.chessPieceTileIndex = xSpaceClickedForArrayIndex;
+        this.chessPieceRowIndex = ySpaceClickedForArrayIndex;
 
 
         //here we are checking if they can click that space
-        if (isEmptyTile(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)){return;}
-        if (Game.currentPlayer == Player.BLACK && isWhitePiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)){
+        if (isEmptyTile(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)) {
             return;
-        }else if(Game.currentPlayer == Player.WHITE && isBlackPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)){
+        }
+        if (Game.currentPlayer == Player.BLACK && isWhitePiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)) {
+            return;
+        } else if (Game.currentPlayer == Player.WHITE && isBlackPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)) {
             return;
         }
 
 
         //if we already have a piece selected, here we redraw board and pieces to get remove the other highlight of the piece selected, better way of handling this is figuring out which piece is selected
-        if (pieceSelected){
+        if (pieceSelected) {
             drawBoard(canvas);
             drawPiecesOnBoard();
             this.pieceSelected = false;
+            this.canvas.getChildren().remove(this.selectedPieceCanvasIndex); //removing the previously drawn tile that was selected as to not overflow the canvas
         }
-
-
-
-
 
         //Get the position of the tile clicked so can modify tile and make it apparent that it has been selected
         int pieceSelectedX = ((int) (Math.floor(m.getX() / 75))) * 75;
@@ -216,9 +219,9 @@ public class ChessBoardModel {
         //the tiles are filled in the canvas from index 0 to 63, then the images go from 64 + 16
         String getTileInfo = "";
         int getIndex = -1;
-        for (int i = 0; i < canvas.getChildren().size(); i++){
+        for (int i = 0; i < canvas.getChildren().size(); i++) {
             Node n = canvas.getChildren().get(i);
-            if (n.toString().contains("Rectangle[x=" + (double) pieceSelectedX + ", y=" + (double) pieceSelectedY)){
+            if (n.toString().contains("Rectangle[x=" + (double) pieceSelectedX + ", y=" + (double) pieceSelectedY)) {
                 getIndex = i;
                 getTileInfo = n.toString();
                 break;
@@ -226,58 +229,60 @@ public class ChessBoardModel {
         }
 
         //remove the current tile selected to replace it with one that has an outline
-        canvas.getChildren().remove(getIndex);
+        this.canvas.getChildren().remove(getIndex);
 
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
-        String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length()-1);
+        String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length() - 1);
 
         //"modifying" i.e adding the tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
         r.setFill(Color.web(tileColor));
         r.setStroke(Color.RED);
-        canvas.getChildren().add(r);
-
+        this.canvas.getChildren().add(r);
+        this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1;
 
 
         //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
-        for (int i = 0; i < canvas.getChildren().size(); i++){
-            if (canvas.getChildren().get(i) instanceof ImageView){
-                canvas.getChildren().remove(i);
+        for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
+            Node n = it.next();
+            if (n instanceof ImageView) {
+                it.remove();
             }
         }
-        drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
+    
 
+
+
+
+
+
+        drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
 
         this.pieceSelected = true; //we have selected a piece
         this.pieceSelectedIndex = getIndex;
+    }
 
 
 
+    public void drawPotentialMoveSpots(int row, int tile){
+        //this is only responsible for drawing spot, not checking whther it can draw
 
 
 
+       /* ChessPiece selectedPiece = this.chessBoardLayout[row][tile];
+
+        //Handling potential spots to move
+        if (selectedPiece == ChessPiece.WHITE_PAWN || selectedPiece == ChessPiece.BLACK_PAWN){
+            if (this.chessBoardLayout[row+1][tile] == ChessPiece.NONE || this.chessBoardLayout[row+1][tile] == ChessPiece.NONE){
+                //get current chesspiececoordinate
+                //draw corresponding tile
+            }
+        }
+        */
 
 
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //same for each other pieces
     }
 }
 

@@ -50,12 +50,18 @@ public class Main extends Application {
 
 
 
-
+//Event-driven responses
         //get mouse click for current player to see which piece they've chosen
         scene.setOnMouseClicked(event -> {
             chessBoard.getSelectedPiece(event);
         });
 
+
+        //if piece selected, show where can move to
+        if (chessBoard.pieceSelected){
+            //chessBoard.drawPotentialMoveSpots(chessBoard.chessPieceRowIndex, chessBoard.chessPieceTileIndex);
+            //check potential move spots in Game class
+        }
 
 
 

@@ -4,16 +4,17 @@
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="297" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586211787617</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Working on getSelectedPiece Method">
+      <created>1586228795661</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586228795661</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -108,7 +116,8 @@
     <MESSAGE value="selected piece drawn" />
     <MESSAGE value="Pieces Drawn on what was selected" />
     <MESSAGE value="Fixed bug in getSelectedPiece" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in getSelectedPiece" />
+    <MESSAGE value="Working on getSelectedPiece Method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on getSelectedPiece Method" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="362" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585591319922">
@@ -123,58 +132,66 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585591317860" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1586211786508">
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1586228794229">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586211786508" />
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228794229" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2561" height="151" key="GridCell.Tab.0.bottom" timestamp="1586228765151">
+    <state width="2561" height="473" key="GridCell.Tab.0.bottom" timestamp="1586479227285">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765151" />
-    <state width="2561" height="151" key="GridCell.Tab.0.center" timestamp="1586228765150">
+    <state width="2561" height="473" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586479227285" />
+    <state width="2561" height="473" key="GridCell.Tab.0.center" timestamp="1586479227285">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765150" />
-    <state width="2561" height="151" key="GridCell.Tab.0.left" timestamp="1586228765150">
+    <state width="2561" height="473" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586479227285" />
+    <state width="2561" height="473" key="GridCell.Tab.0.left" timestamp="1586479227284">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765150" />
-    <state width="2561" height="151" key="GridCell.Tab.0.right" timestamp="1586228765150">
+    <state width="2561" height="473" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586479227284" />
+    <state width="2561" height="473" key="GridCell.Tab.0.right" timestamp="1586479227285">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="151" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228765150" />
-    <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1586207521920">
+    <state width="2561" height="473" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586479227285" />
+    <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1586308764271">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586207521920" />
-    <state width="2561" height="382" key="GridCell.Tab.1.center" timestamp="1586207521920">
+    <state width="2561" height="382" key="GridCell.Tab.1.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586308764271" />
+    <state width="2561" height="382" key="GridCell.Tab.1.center" timestamp="1586308764270">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586207521920" />
-    <state width="2561" height="382" key="GridCell.Tab.1.left" timestamp="1586207521920">
+    <state width="2561" height="382" key="GridCell.Tab.1.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586308764270" />
+    <state width="2561" height="382" key="GridCell.Tab.1.left" timestamp="1586308764270">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586207521920" />
-    <state width="2561" height="382" key="GridCell.Tab.1.right" timestamp="1586207521920">
+    <state width="2561" height="382" key="GridCell.Tab.1.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586308764270" />
+    <state width="2561" height="382" key="GridCell.Tab.1.right" timestamp="1586308764270">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586207521920" />
+    <state width="2561" height="382" key="GridCell.Tab.1.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586308764270" />
     <state x="783" y="350" key="SettingsEditor" timestamp="1586205441513">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="783" y="350" key="SettingsEditor/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586205441513" />
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1586208786275">
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1586228806453">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586208786275" />
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228806453" />
     <state x="987" y="532" key="com.intellij.ide.util.TipDialog" timestamp="1585672835135">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="987" y="532" key="com.intellij.ide.util.TipDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585672835135" />
+    <state x="1007" y="508" key="git4idea.merge.GitPullDialog" timestamp="1586228802248">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1007" y="508" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228802248" />
+    <state x="936" y="333" key="run.anything.popup" timestamp="1586303829691">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="936" y="333" key="run.anything.popup/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586303829691" />
     <state x="943" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1586226082504">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -183,5 +200,8 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1002" y="622" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586055545425" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Chess$Main.ic" NAME="Main Coverage Results" MODIFIED="1586478542161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
