@@ -27,9 +27,8 @@ enum ChessPiece{
 public class ChessBoardModel {
     private final double CHESS_BOARD_HEIGHT = 600;
     private final double CHESS_BOARD_WIDTH = 600;
-    private final int INDEX_OF_BLACK_STARTING_POSITION = 0;
-    private final int INDEX_OF_WHITE_STARTING_POSITION = 8;
-
+    //private final int INDEX_OF_BLACK_STARTING_POSITION = 0;
+    //private final int INDEX_OF_WHITE_STARTING_POSITION = 8;
 
     public boolean pieceSelected = false;
     public int chessPieceTileIndex;
@@ -45,7 +44,6 @@ public class ChessBoardModel {
     private ChessPiece[][] chessBoardLayout = {
                                                 {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
                                                 {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
-                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
                                                 {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
                                                 {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
                                                 {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
@@ -254,10 +252,10 @@ public class ChessBoardModel {
 
         drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
         this.pieceSelected = true; //we have selected a piece
-
+        System.out.println("ok");
 
         //Handling potential move spots
-        Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
+        //Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
     }
 
 

@@ -36,7 +36,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("Chess");
 
-        Game gameModel = new Game();
+
 
         //init chessboard drawing
         Pane canvas = new Pane();
@@ -59,12 +59,8 @@ public class Main extends Application {
         });
 
 
-        //problem is this runs before the mouseclick
-        if (chessBoard.pieceSelected){
-            System.out.println("yes");
-            gameModel.getPotentialMoveSpots(chessBoard.getChessBoard(), chessBoard.chessPieceRowIndex, chessBoard.chessPieceTileIndex);
-            //check potential move spots in Game class
-        }
+
+
 
 
 
