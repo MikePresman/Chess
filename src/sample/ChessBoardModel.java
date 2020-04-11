@@ -27,13 +27,15 @@ enum ChessPiece{
 public class ChessBoardModel {
     private final double CHESS_BOARD_HEIGHT = 600;
     private final double CHESS_BOARD_WIDTH = 600;
+    private final int INDEX_OF_BLACK_STARTING_POSITION = 0;
+    private final int INDEX_OF_WHITE_STARTING_POSITION = 8;
+
 
     public boolean pieceSelected = false;
     public int chessPieceTileIndex;
     public int chessPieceRowIndex;
     private int pieceSelectedX;
     private int pieceSelectedY;
-    private int pieceSelectedIndex;
     private int selectedPieceCanvasIndex;
 
     Rectangle[] brownTiles = new Rectangle[32];
@@ -47,6 +49,7 @@ public class ChessBoardModel {
                                                 {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
                                                 {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
                                                 {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
                                                 {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN},
                                                 {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
                                             };
@@ -54,6 +57,8 @@ public class ChessBoardModel {
     public ChessBoardModel(Pane canvas) {
         drawBoard(canvas);
     }
+
+    public ChessPiece[][] getChessBoard(){return this.chessBoardLayout;}
 
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
@@ -200,7 +205,6 @@ public class ChessBoardModel {
             return;
         }
 
-
         //if we already have a piece selected, here we redraw board and pieces to get remove the other highlight of the piece selected, better way of handling this is figuring out which piece is selected
         if (pieceSelected) {
             drawBoard(canvas);
@@ -218,18 +222,15 @@ public class ChessBoardModel {
 
         //the tiles are filled in the canvas from index 0 to 63, then the images go from 64 + 16
         String getTileInfo = "";
-        int getIndex = -1;
         for (int i = 0; i < canvas.getChildren().size(); i++) {
             Node n = canvas.getChildren().get(i);
             if (n.toString().contains("Rectangle[x=" + (double) pieceSelectedX + ", y=" + (double) pieceSelectedY)) {
-                getIndex = i;
-                getTileInfo = n.toString();
+                this.canvas.getChildren().remove(i); //remove the tile piece because we'll replace it with a redrawn updated one
+                getTileInfo = n.toString(); //need info of the tile in order to populate the replacing one
                 break;
             }
         }
 
-        //remove the current tile selected to replace it with one that has an outline
-        this.canvas.getChildren().remove(getIndex);
 
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
@@ -240,7 +241,7 @@ public class ChessBoardModel {
         r.setFill(Color.web(tileColor));
         r.setStroke(Color.RED);
         this.canvas.getChildren().add(r);
-        this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1;
+        this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1; //this is the index of the selectedPiece because we technically replace it
 
 
         //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
@@ -250,17 +251,13 @@ public class ChessBoardModel {
                 it.remove();
             }
         }
-    
-
-
-
-
-
 
         drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
-
         this.pieceSelected = true; //we have selected a piece
-        this.pieceSelectedIndex = getIndex;
+
+
+        //Handling potential move spots
+        Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
     }
 
 
