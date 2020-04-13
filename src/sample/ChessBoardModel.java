@@ -44,7 +44,7 @@ public class ChessBoardModel {
     private Rectangle[] grayTiles = new Rectangle[32];
 
     private Pane canvas;
-    private ChessPiece[][] chessBoardLayout = {
+    private static ChessPiece[][] chessBoardLayout = {
             {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
             {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
@@ -92,8 +92,8 @@ public class ChessBoardModel {
         }
     }
 
-    public boolean isBlackPiece(int givenTile, int givenRow) {
-        switch (this.chessBoardLayout[givenRow][givenTile]) {
+    public static boolean isBlackPiece(int givenTile, int givenRow) {
+        switch (ChessBoardModel.chessBoardLayout[givenRow][givenTile]) {
             case BLACK_PAWN:
             case BLACK_QUEEN:
             case BLACK_BISHOP:
@@ -106,8 +106,8 @@ public class ChessBoardModel {
         }
     }
 
-    public boolean isWhitePiece(int givenTile, int givenRow) {
-        switch (this.chessBoardLayout[givenRow][givenTile]) {
+    public static boolean isWhitePiece(int givenTile, int givenRow) {
+        switch (ChessBoardModel.chessBoardLayout[givenRow][givenTile]) {
             case WHITE_PAWN:
             case WHITE_QUEEN:
             case WHITE_BISHOP:
@@ -120,8 +120,8 @@ public class ChessBoardModel {
         }
     }
 
-    public boolean isEmptyTile(int givenTile, int givenRow) {
-        if (this.chessBoardLayout[givenRow][givenTile] == ChessPiece.NONE) {
+    public static boolean isEmptyTile(int givenTile, int givenRow) {
+        if (ChessBoardModel.chessBoardLayout[givenRow][givenTile] == ChessPiece.NONE) {
             return true;
         }
         return false;
@@ -266,6 +266,7 @@ public class ChessBoardModel {
     }
 
 
+    //need to consider what to do when attacking a piece exists on that spot
     public void drawPotentialMoveSpots(ArrayList<Pair<Integer, Integer>> potentialMoveSpots) {
         //this is only responsible for drawing spot, not checking whther it can draw
 
@@ -282,12 +283,22 @@ public class ChessBoardModel {
                     break;
                 }
             }
-            
+
             Rectangle r = new Rectangle(canvasXPosition, canvasYPosition, 75, 75);
             r.setFill(Color.LIGHTGOLDENRODYELLOW);
             r.setStroke(Color.BLACK);
             this.canvas.getChildren().add(r);
 
+
+            //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
+            for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
+                Node n = it.next();
+                if (n instanceof ImageView) {
+                    it.remove();
+                }
+            }
+
+            drawPiecesOnBoard(); //redrawing pieces because the selected tile overlaps the chess piece png if there is a piece there
         }
     }
 }

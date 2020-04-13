@@ -41,24 +41,24 @@ public class Game {
                     potentialMoveSpots.add(pair);
                 }
 
-                //HANDLING TAKEOVER MOVEMENT
-                if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && tile + 1 <= 7 && chessBoard[row+1][tile+1] != ChessPiece.NONE){
+                //HANDLING POTENTIAL ATTACK
+                if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && tile + 1 <= 7 && ChessBoardModel.isWhitePiece(tile+1, row+1)){
                     Pair<Integer, Integer> pair = new Pair<>(row+1, tile+1);
                     potentialMoveSpots.add(pair);
-                }if(selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && tile - 1 >= 0 && chessBoard[row+1][tile-1] != ChessPiece.NONE) {
+                }if(selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && tile - 1 >= 0 && ChessBoardModel.isWhitePiece(tile-1, row+1)) {
                     Pair<Integer, Integer> pair = new Pair<>(row+1, tile-1);
                     potentialMoveSpots.add(pair);
-                }if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1  >=0  && tile + 1 <= 7 && chessBoard[row-1][tile+1] == ChessPiece.NONE){
+                }if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1  >=0  && tile + 1 <= 7 && ChessBoardModel.isBlackPiece(tile+1, row-1)){
                     Pair<Integer, Integer> pair = new Pair<>(row-1, tile+1);
                     potentialMoveSpots.add(pair);
-                }if(selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile - 1 >= 0 && chessBoard[row-1][tile-1] == ChessPiece.NONE){
+                }if(selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile - 1 >= 0 && ChessBoardModel.isBlackPiece(tile-1, row -1)){
                     Pair<Integer, Integer> pair = new Pair<>(row-1, tile-1);
                     potentialMoveSpots.add(pair);
                 }
             }
 
 
-            //HANDLING ROOK HERE
+            //HANDLING ROOKS HERE
 
 
 
