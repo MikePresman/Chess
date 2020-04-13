@@ -10,10 +10,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Pair;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 enum ChessPiece{
@@ -27,8 +29,8 @@ enum ChessPiece{
 public class ChessBoardModel {
     private final double CHESS_BOARD_HEIGHT = 600;
     private final double CHESS_BOARD_WIDTH = 600;
-    //private final int INDEX_OF_BLACK_STARTING_POSITION = 0;
-    //private final int INDEX_OF_WHITE_STARTING_POSITION = 8;
+    private final int INDEX_OF_BLACK_STARTING_POSITION = 0;
+    private final int INDEX_OF_WHITE_STARTING_POSITION = 8;
 
     public boolean pieceSelected = false;
     public int chessPieceTileIndex;
@@ -36,42 +38,45 @@ public class ChessBoardModel {
     private int pieceSelectedX;
     private int pieceSelectedY;
     private int selectedPieceCanvasIndex;
+    private ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
 
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
 
     private Pane canvas;
     private ChessPiece[][] chessBoardLayout = {
-                                                {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
-                                                {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
-                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
-                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
-                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
-                                                {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
-                                                {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN},
-                                                {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
-                                            };
+            {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
+            {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
+            {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+            {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+            {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+            {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+            {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN},
+            {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
+    };
 
     public ChessBoardModel(Pane canvas) {
         drawBoard(canvas);
     }
 
-    public ChessPiece[][] getChessBoard(){return this.chessBoardLayout;}
+    public ChessPiece[][] getChessBoard() {
+        return this.chessBoardLayout;
+    }
 
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
             for (int tile = 0; tile < 8; tile++) {
-                if (chessBoardLayout[row][tile] == ChessPiece.NONE){
+                if (chessBoardLayout[row][tile] == ChessPiece.NONE) {
                     continue;
                 }
                 String imageName = "src/assets/" + chessBoardLayout[row][tile] + ".png";
                 ImageView imageView;
 
-                try{
+                try {
                     FileInputStream input = new FileInputStream(imageName);
                     Image image = new Image(input);
                     imageView = new ImageView(image);
-                }catch (FileNotFoundException e){
+                } catch (FileNotFoundException e) {
                     System.out.println("Chess Piece not Found to Draw" + imageName.toString()); //should use logging later
                     return;
                 }
@@ -80,15 +85,15 @@ public class ChessBoardModel {
                 imageView.setX(currentTileX + (24 / 2));
 
                 double currentTileY = row * CHESS_BOARD_HEIGHT / 8;
-                imageView.setY(currentTileY + (24/2));
+                imageView.setY(currentTileY + (24 / 2));
 
                 this.canvas.getChildren().add(imageView);
             }
         }
     }
 
-    public boolean isBlackPiece(int givenTile, int givenRow){
-        switch(this.chessBoardLayout[givenRow][givenTile]){
+    public boolean isBlackPiece(int givenTile, int givenRow) {
+        switch (this.chessBoardLayout[givenRow][givenTile]) {
             case BLACK_PAWN:
             case BLACK_QUEEN:
             case BLACK_BISHOP:
@@ -101,8 +106,8 @@ public class ChessBoardModel {
         }
     }
 
-    public boolean isWhitePiece(int givenTile, int givenRow){
-        switch(this.chessBoardLayout[givenRow][givenTile]){
+    public boolean isWhitePiece(int givenTile, int givenRow) {
+        switch (this.chessBoardLayout[givenRow][givenTile]) {
             case WHITE_PAWN:
             case WHITE_QUEEN:
             case WHITE_BISHOP:
@@ -115,14 +120,14 @@ public class ChessBoardModel {
         }
     }
 
-    public boolean isEmptyTile(int givenTile, int givenRow){
-        if (this.chessBoardLayout[givenRow][givenTile] == ChessPiece.NONE){
+    public boolean isEmptyTile(int givenTile, int givenRow) {
+        if (this.chessBoardLayout[givenRow][givenTile] == ChessPiece.NONE) {
             return true;
         }
         return false;
     }
 
-    public Pane getCanvas(){
+    public Pane getCanvas() {
         return this.canvas;
     }
 
@@ -166,11 +171,11 @@ public class ChessBoardModel {
             }
         }
 
-        for (Rectangle r : brownTiles){
+        for (Rectangle r : brownTiles) {
             canvas.getChildren().add(r);
         }
 
-        for (Rectangle r: grayTiles){
+        for (Rectangle r : grayTiles) {
             canvas.getChildren().add(r);
         }
 
@@ -181,7 +186,6 @@ public class ChessBoardModel {
     //add check to see if the user can click on that spot - i.e. its their piece
     //show where they can move based on what piece they clicked
     public void getSelectedPiece(MouseEvent m) {
-
         if (!Game.gameRunning) {
             return;
         }
@@ -229,7 +233,6 @@ public class ChessBoardModel {
             }
         }
 
-
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
         String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length() - 1);
@@ -252,33 +255,42 @@ public class ChessBoardModel {
 
         drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
         this.pieceSelected = true; //we have selected a piece
-        System.out.println("ok");
 
-        //Handling potential move spots
-        //Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
+
+
+        //NOTE: need to check whether there is a piece selected and where user clicked. IF Pieceselected && clicked on a potentialmovespot then we have to set this.potentialMovespots = null and move piece to that position
+        this.potentialMoveSpots = Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
+        drawPotentialMoveSpots(this.potentialMoveSpots);
+
+
     }
 
 
-
-    public void drawPotentialMoveSpots(int row, int tile){
+    public void drawPotentialMoveSpots(ArrayList<Pair<Integer, Integer>> potentialMoveSpots) {
         //this is only responsible for drawing spot, not checking whther it can draw
 
+        //note .getKey() returns the row of the potentialMoveSpot
+        // .getValue() returns the tile of the potentialMoveSpot
+        for (Pair<Integer, Integer> e : potentialMoveSpots) {
+            int canvasXPosition = e.getValue() * 75;
+            int canvasYPosition = e.getKey() * 75;
 
-
-       /* ChessPiece selectedPiece = this.chessBoardLayout[row][tile];
-
-        //Handling potential spots to move
-        if (selectedPiece == ChessPiece.WHITE_PAWN || selectedPiece == ChessPiece.BLACK_PAWN){
-            if (this.chessBoardLayout[row+1][tile] == ChessPiece.NONE || this.chessBoardLayout[row+1][tile] == ChessPiece.NONE){
-                //get current chesspiececoordinate
-                //draw corresponding tile
+            for (int i = 0; i < this.canvas.getChildren().size(); i++){
+                Node n = canvas.getChildren().get(i);
+                if (n.toString().contains("Rectangle[x=" + (double) canvasXPosition + ", y=" + (double) canvasYPosition)) {
+                    this.canvas.getChildren().remove(i); //remove the tile piece because we'll replace it with a redrawn updated one
+                    break;
+                }
             }
+            
+            Rectangle r = new Rectangle(canvasXPosition, canvasYPosition, 75, 75);
+            r.setFill(Color.LIGHTGOLDENRODYELLOW);
+            r.setStroke(Color.BLACK);
+            this.canvas.getChildren().add(r);
+
         }
-        */
-
-
-        //same for each other pieces
     }
 }
+
 
 

@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+
 enum Player{
     WHITE,
     BLACK
@@ -15,22 +19,54 @@ public class Game {
 
     }
 
-    public void movePiece() {
 
-    }
-
-    public static void getPotentialMoveSpots(ChessPiece[][] chessBoard, int row, int tile) {
+    public static ArrayList<Pair<Integer,Integer>> getPotentialMoveSpots(ChessPiece[][] chessBoard, int row, int tile) {
         ChessPiece selectedPiece = chessBoard[row][tile];
+        ArrayList<Pair<Integer, Integer>> potentialMoveSpots = new ArrayList<>();
 
+            //HANDLING PAWNS HERE
+            if (selectedPiece == ChessPiece.WHITE_PAWN || selectedPiece == ChessPiece.BLACK_PAWN){
+                //HANDLING MOVEMENT UP THE BOARD - NEED TO HANDLE SPECIAL MOVEMENT BACKWARDS WHEN KINGED? IDK READ ABOUT IT
+                if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && chessBoard[row+1][tile] == ChessPiece.NONE){
+                    Pair<Integer, Integer> pair = new Pair<>(row+1, tile);
+                    potentialMoveSpots.add(pair);
+                }if(selectedPiece == ChessPiece.BLACK_PAWN && row + 2  <= 7 && chessBoard[row+2][tile] == ChessPiece.NONE) {
+                    Pair<Integer, Integer> pair = new Pair<>(row+2, tile);
+                    potentialMoveSpots.add(pair);
+                }if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1  >=0  && chessBoard[row-1][tile] == ChessPiece.NONE){
+                    Pair<Integer, Integer> pair = new Pair<>(row-1, tile);
+                    potentialMoveSpots.add(pair);
+                }if(selectedPiece == ChessPiece.WHITE_PAWN && row - 2 >= 0 && chessBoard[row-2][tile] == ChessPiece.NONE){
+                    Pair<Integer, Integer> pair = new Pair<>(row-2, tile);
+                    potentialMoveSpots.add(pair);
+                }
 
-            if (selectedPiece == ChessPiece.WHITE_PAWN || selectedPiece == ChessPiece.BLACK_PAWN) {
-                if (chessBoard[row + 1][tile] == ChessPiece.NONE || chessBoard[row][tile] == ChessPiece.NONE) { //handling move
-                    //get current chesspiececoordinate
-                    //draw corresponding tile
-
+                //HANDLING TAKEOVER MOVEMENT
+                if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && tile + 1 <= 7 && chessBoard[row+1][tile+1] != ChessPiece.NONE){
+                    Pair<Integer, Integer> pair = new Pair<>(row+1, tile+1);
+                    potentialMoveSpots.add(pair);
+                }if(selectedPiece == ChessPiece.BLACK_PAWN && row + 1  <= 7 && tile - 1 >= 0 && chessBoard[row+1][tile-1] != ChessPiece.NONE) {
+                    Pair<Integer, Integer> pair = new Pair<>(row+1, tile-1);
+                    potentialMoveSpots.add(pair);
+                }if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1  >=0  && tile + 1 <= 7 && chessBoard[row-1][tile+1] == ChessPiece.NONE){
+                    Pair<Integer, Integer> pair = new Pair<>(row-1, tile+1);
+                    potentialMoveSpots.add(pair);
+                }if(selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile - 1 >= 0 && chessBoard[row-1][tile-1] == ChessPiece.NONE){
+                    Pair<Integer, Integer> pair = new Pair<>(row-1, tile-1);
+                    potentialMoveSpots.add(pair);
                 }
             }
+
+
+            //HANDLING ROOK HERE
+
+
+
+
+            return potentialMoveSpots;
+
         }
+
 
     }
 
