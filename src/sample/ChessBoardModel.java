@@ -45,8 +45,8 @@ public class ChessBoardModel {
 
     private Pane canvas;
     private static ChessPiece[][] chessBoardLayout = {
-            {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
-            {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
+            {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.WHITE_ROOK, ChessPiece.WHITE_BISHOP, ChessPiece.BLACK_BISHOP, ChessPiece.NONE, ChessPiece.NONE},
+            {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.NONE, ChessPiece.BLACK_ROOK, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.WHITE_PAWN},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
@@ -236,10 +236,26 @@ public class ChessBoardModel {
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
         String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length() - 1);
+        //this try block handles if you click on the same spot as piece selected, weird bug
+        try{
+            tileColor = tileColor.split(",")[0];
+        }catch (Exception e){
+
+        }
+        boolean colorWhite = false;
+        if (tileColor.equals("0xffffffff")){
+            colorWhite = true;
+        }
+
 
         //"modifying" i.e adding the tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
-        r.setFill(Color.web(tileColor));
+        if (colorWhite){
+            r.setFill(Color.WHITE);
+        }else{
+            r.setFill(Color.GRAY);
+        }
+
         r.setStroke(Color.RED);
         this.canvas.getChildren().add(r);
         this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1; //this is the index of the selectedPiece because we technically replace it
@@ -260,6 +276,13 @@ public class ChessBoardModel {
 
         //NOTE: need to check whether there is a piece selected and where user clicked. IF Pieceselected && clicked on a potentialmovespot then we have to set this.potentialMovespots = null and move piece to that position
         this.potentialMoveSpots = Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
+        for (Pair<Integer, Integer> e : this.potentialMoveSpots){
+            System.out.println(e.getKey());
+            System.out.println(e.getValue());
+            System.out.println("---------------------");
+
+        }
+
         drawPotentialMoveSpots(this.potentialMoveSpots);
 
 
