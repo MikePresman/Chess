@@ -25,7 +25,6 @@ public class Game {
         ChessPiece selectedPiece = chessBoard[row][tile];
         ArrayList<Pair<Integer, Integer>> potentialMoveSpots = new ArrayList<>();
 
-
         //HANDLING PAWNS HERE - Can't go backwards
         if (selectedPiece == ChessPiece.WHITE_PAWN || selectedPiece == ChessPiece.BLACK_PAWN) {
             //HANDLING MOVEMENT UP THE BOARD - NEED TO HANDLE SPECIAL MOVEMENT BACKWARDS WHEN KINGED? IDK READ ABOUT IT
@@ -257,11 +256,121 @@ public class Game {
     }
 
         //BISHOP - CAN MOVE DIAGONALLY ANYWAY
+        if (selectedPiece == ChessPiece.BLACK_BISHOP) {
+            //diagnol up left
+            for (int i = row - 1, j = tile - 1; i >= 0 && j >= 0; i--, j--) {
+                if (chessBoard[i][j] == ChessPiece.NONE) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                } else if (ChessBoardModel.isWhitePiece(j, i)) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                    break;
+                } else {
+                    break;
+                }
+            }
 
+            //diagnoal up right
+            for (int i = row - 1, j = tile + 1; i >= 0 && j <= 7; i--, j++) {
+                if (chessBoard[i][j] == ChessPiece.NONE) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                } else if (ChessBoardModel.isWhitePiece(j, i)) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                    break;
+                } else {
+                    break;
+                }
+            }
 
+            //dianonal down left
+            for (int i = row + 1, j = tile - 1; i <= 7 && j >= 0; i++, j--) {
+                if (chessBoard[i][j] == ChessPiece.NONE) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                } else if (ChessBoardModel.isWhitePiece(j, i)) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                    break;
+                } else {
+                    break;
+                }
+            }
 
+            //diagnoal down right
+            for (int i = row + 1, j = tile + 1; i <= 7 && j <= 7; i++, j++) {
+                if (chessBoard[i][j] == ChessPiece.NONE) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                } else if (ChessBoardModel.isWhitePiece(j, i)) {
+                    Pair<Integer, Integer> pair = new Pair<>(i, j);
+                    potentialMoveSpots.add(pair);
+                    break;
+                } else {
+                    break;
+                }
+            }
+        }
 
+            if (selectedPiece == ChessPiece.WHITE_BISHOP) {
+                //diagnol up left
+                for (int i = row - 1, j = tile - 1; i >= 0 && j >= 0; i--, j--) {
+                    if (chessBoard[i][j] == ChessPiece.NONE) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                    } else if (ChessBoardModel.isBlackPiece(j, i)) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                        break;
+                    } else {
+                        break;
+                    }
+                }
 
+                //diagnoal up right
+                for (int i = row - 1, j = tile + 1; i >= 0 && j <= 7; i--, j++) {
+                    if (chessBoard[i][j] == ChessPiece.NONE) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                    } else if (ChessBoardModel.isBlackPiece(j, i)) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+
+                //dianonal down left
+                for (int i = row + 1, j = tile - 1; i <= 7 && j >= 0; i++, j--) {
+                    if (chessBoard[i][j] == ChessPiece.NONE) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                    } else if (ChessBoardModel.isBlackPiece(j, i)) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+
+                //diagnoal down right
+                for (int i = row + 1, j = tile + 1; i <= 7 && j <= 7; i++, j++) {
+                    if (chessBoard[i][j] == ChessPiece.NONE) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                    } else if (ChessBoardModel.isBlackPiece(j, i)) {
+                        Pair<Integer, Integer> pair = new Pair<>(i, j);
+                        potentialMoveSpots.add(pair);
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+            }
         return potentialMoveSpots;
     }
 
