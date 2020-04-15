@@ -121,7 +121,6 @@ public class Game {
                     break;
                 }
             }
-
         }
         //remember rook can move up and down
         if (selectedPiece == ChessPiece.WHITE_ROOK) {

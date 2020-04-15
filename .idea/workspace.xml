@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586990866248</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fixed small rook movement problem">
+      <created>1586990978717</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1586990978717</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -206,7 +213,8 @@
     <MESSAGE value="implemented king potential movement" />
     <MESSAGE value="implemented queen potential movement - done all potential movement" />
     <MESSAGE value="finished movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished movement" />
+    <MESSAGE value="fixed small rook movement problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed small rook movement problem" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="362" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585591319922">
@@ -221,30 +229,30 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585591317860" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1586990865096">
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1586990977323">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990865096" />
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990977323" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2561" height="227" key="GridCell.Tab.0.bottom" timestamp="1586990953768">
+    <state width="2561" height="227" key="GridCell.Tab.0.bottom" timestamp="1586991216070">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="227" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990953768" />
-    <state width="2561" height="227" key="GridCell.Tab.0.center" timestamp="1586990953768">
+    <state width="2561" height="227" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586991216070" />
+    <state width="2561" height="227" key="GridCell.Tab.0.center" timestamp="1586991216070">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="227" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990953768" />
-    <state width="2561" height="227" key="GridCell.Tab.0.left" timestamp="1586990953767">
+    <state width="2561" height="227" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586991216070" />
+    <state width="2561" height="227" key="GridCell.Tab.0.left" timestamp="1586991216070">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="227" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990953767" />
-    <state width="2561" height="227" key="GridCell.Tab.0.right" timestamp="1586990953768">
+    <state width="2561" height="227" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586991216070" />
+    <state width="2561" height="227" key="GridCell.Tab.0.right" timestamp="1586991216070">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="227" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990953768" />
+    <state width="2561" height="227" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586991216070" />
     <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1586762832427">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -265,10 +273,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="783" y="350" key="SettingsEditor/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586775663488" />
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1586990868577">
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1586990981882">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990868577" />
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586990981882" />
     <state x="987" y="532" key="com.intellij.ide.util.TipDialog" timestamp="1585672835135">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -281,10 +289,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="662" y="331" key="new project wizard/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586876952332" />
-    <state x="936" y="333" key="run.anything.popup" timestamp="1586757295734">
+    <state x="936" y="333" key="run.anything.popup" timestamp="1586991079124">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="936" y="333" key="run.anything.popup/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586757295734" />
+    <state x="936" y="333" key="run.anything.popup/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586991079124" />
     <state x="943" y="317" width="672" height="678" key="search.everywhere.popup" timestamp="1586607099270">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
