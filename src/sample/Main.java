@@ -36,8 +36,6 @@ public class Main extends Application {
 
         primaryStage.setTitle("Chess");
 
-
-
         //init chessboard drawing
         Pane canvas = new Pane();
         ChessBoardModel chessBoard = new ChessBoardModel(canvas);
@@ -58,6 +56,8 @@ public class Main extends Application {
             chessBoard.getSelectedPiece(event);
         });
 
+
+        //check for second click
 
 
 

@@ -20,6 +20,7 @@ public class Game {
     }
 
 
+
     public static ArrayList<Pair<Integer, Integer>> getPotentialMoveSpots(ChessPiece[][] chessBoard, int row, int tile) {
         ChessPiece selectedPiece = chessBoard[row][tile];
         ArrayList<Pair<Integer, Integer>> potentialMoveSpots = new ArrayList<>();

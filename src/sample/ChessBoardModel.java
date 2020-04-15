@@ -48,7 +48,7 @@ public class ChessBoardModel {
             {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
             {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
-            {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.BLACK_QUEEN, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
+            {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.BLACK_QUEEN},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN},
@@ -61,6 +61,18 @@ public class ChessBoardModel {
 
     public ChessPiece[][] getChessBoard() {
         return this.chessBoardLayout;
+    }
+
+
+    private void redrawPieces(){
+        for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
+            Node n = it.next();
+            if (n instanceof ImageView) {
+                it.remove();
+            }
+        }
+
+        drawPiecesOnBoard();
     }
 
     public void drawPiecesOnBoard() {
@@ -193,6 +205,23 @@ public class ChessBoardModel {
         //get the indicies of the piece clicked for the array
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
+
+
+        if (this.pieceSelected == true){
+            for (Pair<Integer, Integer> e : this.potentialMoveSpots){
+                if (e.getKey() == ySpaceClickedForArrayIndex && e.getValue() == xSpaceClickedForArrayIndex){
+                    chessBoardLayout[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex];
+                    chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex] = ChessPiece.NONE;
+                    System.out.println(chessBoardLayout[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex]);
+                    drawBoard(this.canvas);
+                    redrawPieces();
+                    this.pieceSelected = false;
+
+                    return;
+                }
+            }
+        }
+
         this.chessPieceTileIndex = xSpaceClickedForArrayIndex;
         this.chessPieceRowIndex = ySpaceClickedForArrayIndex;
 
@@ -248,7 +277,7 @@ public class ChessBoardModel {
         }
 
 
-        //"modifying" i.e adding the tile/rectangle on the canvas
+        //"modifying" i.e adding the selected tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
         if (colorWhite){
             r.setFill(Color.WHITE);
@@ -276,14 +305,10 @@ public class ChessBoardModel {
 
         //NOTE: need to check whether there is a piece selected and where user clicked. IF Pieceselected && clicked on a potentialmovespot then we have to set this.potentialMovespots = null and move piece to that position
         this.potentialMoveSpots = Game.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
-        for (Pair<Integer, Integer> e : this.potentialMoveSpots){
-            System.out.println(e.getKey());
-            System.out.println(e.getValue());
-            System.out.println("---------------------");
-
-        }
-
         drawPotentialMoveSpots(this.potentialMoveSpots);
+
+
+        //check here if pieceselected is true and if click is on a potential move spot
 
 
     }
