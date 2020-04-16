@@ -207,20 +207,18 @@ public class ChessBoardModel {
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
 
 
-        if (this.pieceSelected == true){
-            for (Pair<Integer, Integer> e : this.potentialMoveSpots){
-                if (e.getKey() == ySpaceClickedForArrayIndex && e.getValue() == xSpaceClickedForArrayIndex){
-                    chessBoardLayout[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex];
-                    chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex] = ChessPiece.NONE;
-                    System.out.println(chessBoardLayout[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex]);
-                    drawBoard(this.canvas);
-                    redrawPieces();
-                    this.pieceSelected = false;
-                    Game.currentPlayer = Game.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
-
-                    return;
+        //fix click bug
+        if (this.pieceSelected == true) {
+                for (Pair<Integer, Integer> e : this.potentialMoveSpots) {
+                    if (e.getKey() == ySpaceClickedForArrayIndex && e.getValue() == xSpaceClickedForArrayIndex) {
+                        chessBoardLayout[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex];
+                        chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex] = ChessPiece.NONE;
+                        drawBoard(this.canvas);
+                        redrawPieces();
+                        this.pieceSelected = false;
+                        Game.currentPlayer = Game.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
+                    }
                 }
-            }
         }
 
         this.chessPieceTileIndex = xSpaceClickedForArrayIndex;
@@ -273,17 +271,21 @@ public class ChessBoardModel {
 
         }
         boolean colorWhite = false;
+
+
         if (tileColor.equals("0xffffffff")){
             colorWhite = true;
         }
 
 
+
+
         //"modifying" i.e adding the selected tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
         if (colorWhite){
-            r.setFill(Color.WHITE);
+            r.setFill(Color.LIGHTGOLDENRODYELLOW);
         }else{
-            r.setFill(Color.GRAY);
+            r.setFill(Color.LIGHTGOLDENRODYELLOW);
         }
 
         r.setStroke(Color.RED);

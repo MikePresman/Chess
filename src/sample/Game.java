@@ -13,7 +13,7 @@ enum Player {
 
 public class Game {
     public static boolean gameRunning = true;
-    public static Player currentPlayer = Player.BLACK;
+    public static Player currentPlayer = Player.WHITE;
 
     public Game() {
 
@@ -32,7 +32,7 @@ public class Game {
                 Pair<Integer, Integer> pair = new Pair<>(row + 1, tile);
                 potentialMoveSpots.add(pair);
             }
-            if (selectedPiece == ChessPiece.BLACK_PAWN && row + 2 <= 7 && chessBoard[row + 2][tile] == ChessPiece.NONE && chessBoard[row + 1][tile] == ChessPiece.NONE) {
+            if (selectedPiece == ChessPiece.BLACK_PAWN && row + 2 <= 7 && chessBoard[row + 2][tile] == ChessPiece.NONE && chessBoard[row + 1][tile] == ChessPiece.NONE && row == 1) {
                 Pair<Integer, Integer> pair = new Pair<>(row + 2, tile);
                 potentialMoveSpots.add(pair);
             }
@@ -40,7 +40,7 @@ public class Game {
                 Pair<Integer, Integer> pair = new Pair<>(row - 1, tile);
                 potentialMoveSpots.add(pair);
             }
-            if (selectedPiece == ChessPiece.WHITE_PAWN && row - 2 >= 0 && chessBoard[row - 2][tile] == ChessPiece.NONE && chessBoard[row - 1][tile] == ChessPiece.NONE) {
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row - 2 >= 0 && chessBoard[row - 2][tile] == ChessPiece.NONE && chessBoard[row - 1][tile] == ChessPiece.NONE && row == 6) {
                 Pair<Integer, Integer> pair = new Pair<>(row - 2, tile);
                 potentialMoveSpots.add(pair);
             }
