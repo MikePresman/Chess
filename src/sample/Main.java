@@ -57,8 +57,11 @@ public class Main extends Application {
         });
 
 
-        //check for second click
 
+        //TODO : FIX BUGS
+        //TODO : ORGANIZE FLOW
+        //TODO : ADD SOUND
+        //TODO : IMPLEMENT SOCKETS FOR ONLINE GAMEPLAY AND HANDLE ONLINE STRUCTURE
 
 
 
@@ -71,6 +74,7 @@ public class Main extends Application {
         //check if move is valid
         //update canvas
         //see if game is over
+
         //get next players move repeat
 
 

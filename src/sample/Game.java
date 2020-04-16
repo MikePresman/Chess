@@ -3,6 +3,7 @@ package sample;
 
 import javafx.util.Pair;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 enum Player {
@@ -519,10 +520,11 @@ public class Game {
             }
 
             //loop for vertical upward possible moves with attack
-            for (int i = row - 1; i >= 0; i++) {
+            for (int i = row - 1; i >= 0; i--) {
                 if (chessBoard[i][tile] == ChessPiece.NONE) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
+                    System.out.println("Yes");
                 } else if (ChessBoardModel.isWhitePiece(tile, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
@@ -634,7 +636,7 @@ public class Game {
             }
 
             //loop for vertical upward possible moves with attack
-            for (int i = row - 1; i >= 0; i++) {
+            for (int i = row - 1; i >= 0; i--) {
                 if (chessBoard[i][tile] == ChessPiece.NONE) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
