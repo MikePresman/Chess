@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/BishopModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessPieceMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/KingModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/KnightModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/PawnModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/QueenModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/RookModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/ChessBoardModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/ChessPiece.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -30,6 +37,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ZqzQDrSauzKq8UYk4KnM0Iw38R" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -229,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587069624016</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="renamed packages and files">
+      <created>1587172194857</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1587172194857</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -266,10 +283,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="734" y="362" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585591319922" />
-    <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser" timestamp="1586205135231">
+    <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser" timestamp="1587173388487">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586205135231" />
+    <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173388487" />
     <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585591317860">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -282,30 +299,30 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1010" y="451" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587170959738" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1587172141277">
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1587172193619">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172141277" />
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172193619" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2561" height="238" key="GridCell.Tab.0.bottom" timestamp="1587172114021">
+    <state width="2561" height="238" key="GridCell.Tab.0.bottom" timestamp="1587173279145">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="238" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172114021" />
-    <state width="2561" height="238" key="GridCell.Tab.0.center" timestamp="1587172114021">
+    <state width="2561" height="238" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173279145" />
+    <state width="2561" height="238" key="GridCell.Tab.0.center" timestamp="1587173279144">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="238" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172114021" />
-    <state width="2561" height="238" key="GridCell.Tab.0.left" timestamp="1587172114020">
+    <state width="2561" height="238" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173279144" />
+    <state width="2561" height="238" key="GridCell.Tab.0.left" timestamp="1587173279144">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="238" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172114020" />
-    <state width="2561" height="238" key="GridCell.Tab.0.right" timestamp="1587172114021">
+    <state width="2561" height="238" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173279144" />
+    <state width="2561" height="238" key="GridCell.Tab.0.right" timestamp="1587173279144">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="238" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172114021" />
+    <state width="2561" height="238" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173279144" />
     <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1586762832427">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
