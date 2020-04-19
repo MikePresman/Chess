@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Chess_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/QueenModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/QueenModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,11 +311,17 @@
       <option name="project" value="LOCAL" />
       <updated>1587313437377</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="built jar file for it">
+      <created>1587327759022</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1587327759022</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="proper implementation of redrawing pieces when selecting a piece" />
     <MESSAGE value="wip idk, to tired to write a meaninful commit message" />
     <MESSAGE value="chessboardlayout row was copied" />
     <MESSAGE value="drawPotentialMoveSpots begun, Finished basic drawing" />
@@ -345,12 +346,14 @@
     <MESSAGE value="fix drawing bug" />
     <MESSAGE value="fixed bugs caused by refactoring" />
     <MESSAGE value="fixed queen movement bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed queen movement bug" />
+    <MESSAGE value="built jar file for it" />
+    <option name="LAST_COMMIT_MESSAGE" value="built jar file for it" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="872" y="363" key="#Notifications" timestamp="1587172189015">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="-1266" y="414" key="#Notifications" timestamp="1587327891060">
+      <screen x="-1920" y="144" width="1920" height="1050" />
     </state>
+    <state x="-1266" y="414" key="#Notifications/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587327891060" />
     <state x="872" y="363" key="#Notifications/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172189015" />
     <state x="734" y="362" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585591319922">
       <screen x="0" y="0" width="2560" height="1410" />
@@ -372,9 +375,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1010" y="451" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587170959738" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1587313436415">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="-1210" y="370" key="CommitChangelistDialog2" timestamp="1587327757352">
+      <screen x="-1920" y="144" width="1920" height="1050" />
     </state>
+    <state x="-1210" y="370" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587327757352" />
     <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587313436415" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
@@ -428,9 +432,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="92" y="92" width="2376" height="1226" key="VCS.FileHistoryDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587282388772" />
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1587313439950">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state x="-1266" y="472" key="Vcs.Push.Dialog.v2" timestamp="1587327882394">
+      <screen x="-1920" y="144" width="1920" height="1050" />
     </state>
+    <state x="-1266" y="472" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587327882394" />
     <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587313439950" />
     <state x="987" y="532" key="com.intellij.ide.util.TipDialog" timestamp="1585672835135">
       <screen x="0" y="0" width="2560" height="1410" />
