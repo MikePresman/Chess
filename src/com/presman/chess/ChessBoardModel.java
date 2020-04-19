@@ -32,7 +32,7 @@ public class ChessBoardModel {
     private int pieceSelectedX;
     private int pieceSelectedY;
     private int selectedPieceCanvasIndex;
-    private ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
+    public ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
 
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
@@ -51,6 +51,7 @@ public class ChessBoardModel {
 
 
     public ChessBoardModel(Pane canvas) {
+        this.canvas = canvas;
         drawBoard(canvas);
     }
     public static ChessPiece[][] getChessBoard() {
@@ -58,7 +59,7 @@ public class ChessBoardModel {
     }
 
 
-    private void redrawPieces(){
+    public void redrawPieces(){
         for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
             Node n = it.next();
             if (n instanceof ImageView) {
@@ -67,6 +68,7 @@ public class ChessBoardModel {
         }
         drawPiecesOnBoard();
     }
+
 
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
@@ -137,6 +139,13 @@ public class ChessBoardModel {
     }
 
     public void drawBoard(Pane canvas) {
+        for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
+            Node n = it.next();
+            if (n.toString().contains("Rectangle")){
+                it.remove();
+            }
+        }
+
         double tileWidth = CHESS_BOARD_WIDTH / 8;
         double tileHeight = CHESS_BOARD_HEIGHT / 8;
 
@@ -188,48 +197,14 @@ public class ChessBoardModel {
     }
 
 
-    //add check to see if the user can click on that spot - i.e. its their piece
-    //show where they can move based on what piece they clicked
-    public void getSelectedPiece(MouseEvent m) {
-        if (!GameModel.gameRunning) {
-            return;
-        }
+    public ArrayList<Pair<Integer, Integer>> getSelectedPiece(MouseEvent m) {
 
         //get the indicies of the piece clicked for the array
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
-
-
-
-        //TODO: WORK ON THIS LAST
-        if (this.pieceSelected == true) {
-                for (Pair<Integer, Integer> e : this.potentialMoveSpots) {
-                    if (e.getKey() == ySpaceClickedForArrayIndex && e.getValue() == xSpaceClickedForArrayIndex) {
-                        chessBoardLayout[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex];
-                        chessBoardLayout[this.chessPieceRowIndex][this.chessPieceTileIndex] = ChessPiece.NONE;
-                        drawBoard(this.canvas);
-                        redrawPieces();
-                        this.pieceSelected = false;
-                        GameModel.currentPlayer = GameModel.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
-                    }else{
-
-                }
-            }
-        }
-
         this.chessPieceTileIndex = xSpaceClickedForArrayIndex;
         this.chessPieceRowIndex = ySpaceClickedForArrayIndex;
 
-
-        //here we are checking if they can click that space
-        if (isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-            return;
-        }
-        if (GameModel.currentPlayer == Player.BLACK && isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-            return;
-        } else if (GameModel.currentPlayer == Player.WHITE && isBlackPiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-            return;
-        }
 
         //if we already have a piece selected, here we redraw board and pieces to get remove the other highlight of the piece selected, better way of handling this is figuring out which piece is selected
         if (pieceSelected) {
@@ -246,6 +221,10 @@ public class ChessBoardModel {
         this.pieceSelectedX = pieceSelectedX;
         this.pieceSelectedY = pieceSelectedY;
 
+
+
+
+
         //the tiles are filled in the canvas from index 0 to 63, then the images go from 64 + 16
         String getTileInfo = "";
         for (int i = 0; i < canvas.getChildren().size(); i++) {
@@ -256,7 +235,6 @@ public class ChessBoardModel {
                 break;
             }
         }
-
         //here we need to get tile colour
         String[] tileColorParse = getTileInfo.split("fill");
         String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length() - 1);
@@ -271,8 +249,6 @@ public class ChessBoardModel {
         if (tileColor.equals("0xffffffff")){
             colorWhite = true;
         }
-
-
         //"modifying" i.e adding the selected tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
         if (colorWhite){
@@ -280,27 +256,21 @@ public class ChessBoardModel {
         }else{
             r.setFill(Color.LIGHTGOLDENRODYELLOW);
         }
-
         r.setStroke(Color.RED);
         this.canvas.getChildren().add(r);
         this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1; //this is the index of the selectedPiece because we technically replace it
 
-
-        //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
+        //this prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
         redrawPieces();
-
         drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
+
         this.pieceSelected = true; //we have selected a piece
-
-
-        //NOTE: need to check whether there is a piece selected and where user clicked. IF Pieceselected && clicked on a potentialmovespot then we have to set this.potentialMovespots = null and move piece to that position
         this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots// }
+        return this.potentialMoveSpots;
 
 
 
-        drawPotentialMoveSpots(this.potentialMoveSpots);
 
-        //check here if pieceselected is true and if click is on a potential move spot
 
     }
 

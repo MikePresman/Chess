@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/BishopModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/BishopModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/ChessPieceMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessPieceMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/KingModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/KingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/KnightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/KnightModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/PawnModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/PawnModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/QueenModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/QueenModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/RookModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/RookModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/sample.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587173495524</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="refactored GameModel">
+      <created>1587268240600</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1587268240600</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -279,7 +276,8 @@
     <MESSAGE value="fixed small queen movement bug" />
     <MESSAGE value="renamed packages and files" />
     <MESSAGE value="added files for each chess piece movement, will refactor it" />
-    <option name="LAST_COMMIT_MESSAGE" value="added files for each chess piece movement, will refactor it" />
+    <MESSAGE value="refactored GameModel" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored GameModel" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="363" key="#Notifications" timestamp="1587172189015">
@@ -306,46 +304,46 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1010" y="451" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587170959738" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1587173494156">
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1587268238762">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173494156" />
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587268238762" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2561" height="278" key="GridCell.Tab.0.bottom" timestamp="1587268185794">
+    <state width="2561" height="280" key="GridCell.Tab.0.bottom" timestamp="1587280065132">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="278" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587268185794" />
-    <state width="2561" height="278" key="GridCell.Tab.0.center" timestamp="1587268185794">
+    <state width="2561" height="280" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587280065132" />
+    <state width="2561" height="280" key="GridCell.Tab.0.center" timestamp="1587280065132">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="278" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587268185794" />
-    <state width="2561" height="278" key="GridCell.Tab.0.left" timestamp="1587268185793">
+    <state width="2561" height="280" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587280065132" />
+    <state width="2561" height="280" key="GridCell.Tab.0.left" timestamp="1587280065132">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="278" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587268185793" />
-    <state width="2561" height="278" key="GridCell.Tab.0.right" timestamp="1587268185794">
+    <state width="2561" height="280" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587280065132" />
+    <state width="2561" height="280" key="GridCell.Tab.0.right" timestamp="1587280065132">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="278" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587268185794" />
-    <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1586762832427">
+    <state width="2561" height="280" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587280065132" />
+    <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1587275304916">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586762832427" />
-    <state width="2561" height="382" key="GridCell.Tab.1.center" timestamp="1586762832427">
+    <state width="2561" height="382" key="GridCell.Tab.1.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587275304916" />
+    <state width="2561" height="382" key="GridCell.Tab.1.center" timestamp="1587275304916">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586762832427" />
-    <state width="2561" height="382" key="GridCell.Tab.1.left" timestamp="1586762832427">
+    <state width="2561" height="382" key="GridCell.Tab.1.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587275304916" />
+    <state width="2561" height="382" key="GridCell.Tab.1.left" timestamp="1587275304916">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586762832427" />
-    <state width="2561" height="382" key="GridCell.Tab.1.right" timestamp="1586762832427">
+    <state width="2561" height="382" key="GridCell.Tab.1.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587275304916" />
+    <state width="2561" height="382" key="GridCell.Tab.1.right" timestamp="1587275304916">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2561" height="382" key="GridCell.Tab.1.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586762832427" />
+    <state width="2561" height="382" key="GridCell.Tab.1.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587275304916" />
     <state x="783" y="350" key="SettingsEditor" timestamp="1587170767371">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -354,10 +352,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1001" y="446" width="555" height="524" key="StructurePopup/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587098751516" />
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1587173500350">
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2" timestamp="1587279890062">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587173500350" />
+    <state x="872" y="440" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587279890062" />
     <state x="987" y="532" key="com.intellij.ide.util.TipDialog" timestamp="1585672835135">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
