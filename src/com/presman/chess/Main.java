@@ -31,31 +31,10 @@ public class Main extends Application {
         primaryStage.show();
 
 
-
         //Event-driven responses
         scene.setOnMouseClicked(event -> {
             gameController.handleEvent(event);
         });
-
-
-
-        //TODO : ADD SOUND
-        //TODO : IMPLEMENT SOCKETS FOR ONLINE GAMEPLAY AND HANDLE ONLINE STRUCTURE
-
-
-
-
-
-
-
-
-
-        //check if move is valid
-        //update canvas
-        //see if game is over
-
-        //get next players move repeat
-
 
 
         }

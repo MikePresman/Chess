@@ -49,7 +49,6 @@ public class ChessBoardModel {
             {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
     };
 
-
     public ChessBoardModel(Pane canvas)
     {
         this.canvas = canvas;
@@ -235,8 +234,6 @@ public class ChessBoardModel {
 
     }
 
-
-    //need to consider what to do when attacking a piece exists on that spot
     public void drawPotentialMoveSpots(ArrayList<Pair<Integer, Integer>> potentialMoveSpots) {
         //this is only responsible for drawing spot, not checking whther it can draw
 
