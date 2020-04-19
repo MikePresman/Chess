@@ -66,8 +66,6 @@ public class GameController {
         //getSelectedPiece
         ArrayList<Pair<Integer, Integer>> potenialSpots = this.board.getSelectedPiece(m);
         this.board.drawPotentialMoveSpots(potenialSpots);
-
-
     }
 
     public void handleMovingPiece(int xSpaceClickedForArrayIndex, int ySpaceClickedForArrayIndex) {

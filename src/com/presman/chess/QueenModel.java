@@ -45,7 +45,7 @@ public class QueenModel implements ChessPieceMovement {
                 if (ChessBoardModel.isEmptyTile(row, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(row, i);
                     potentialMoveSpots.add(pair);
-                } else if (ChessBoardModel.isWhitePiece(row, i)) {
+                } else if (ChessBoardModel.isBlackPiece(row, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(row, i);
                     potentialMoveSpots.add(pair);
                     break;

@@ -33,7 +33,7 @@ public class ChessBoardModel {
     private int pieceSelectedY;
     public int selectedPieceCanvasIndex;
     public ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
-    Rectangle temp;
+    private Rectangle temp;
 
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
@@ -237,11 +237,6 @@ public class ChessBoardModel {
 
         drawBoard(this.getCanvas()); //redrawing pieces because the selected tile outline overlaps the chess piece png.
         redrawPieces(); //this prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
-
-
-
-
-
 
 
         this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots// }
