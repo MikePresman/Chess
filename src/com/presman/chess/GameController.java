@@ -35,12 +35,21 @@ public class GameController {
         if (this.board.pieceSelected == true && this.board.potentialMoveSpots.contains(t)) {
             handleMovingPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex);
             return;
-        } else {
-            System.out.println("HERE");
+        } else if (this.board.pieceSelected && !this.board.potentialMoveSpots.contains(t)) {
+            if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+                return;
+            }
+            if (GameModel.currentPlayer == Player.BLACK && ChessBoardModel.isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+                return;
+            } else if (GameModel.currentPlayer == Player.WHITE && ChessBoardModel.isBlackPiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+                return;
+            }
+
+            this.board.pieceSelected = false;
             this.board.drawBoard(this.board.getCanvas());
             this.board.redrawPieces();
-
         }
+
 
 
         //If spot clickable check
@@ -66,9 +75,9 @@ public class GameController {
             if (this.board.potentialMoveSpots.get(i).getKey() == ySpaceClickedForArrayIndex && this.board.potentialMoveSpots.get(i).getValue() == xSpaceClickedForArrayIndex) {
                 ChessBoardModel.getChessBoard()[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex];
                 ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex] = ChessPiece.NONE;
+                this.board.pieceSelected = false;
                 this.board.drawBoard(this.board.getCanvas());
                 this.board.redrawPieces();
-                this.board.pieceSelected = false;
                 GameModel.currentPlayer = GameModel.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
                 return;
             } else {

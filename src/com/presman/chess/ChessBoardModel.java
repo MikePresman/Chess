@@ -33,6 +33,7 @@ public class ChessBoardModel {
     private int pieceSelectedY;
     public int selectedPieceCanvasIndex;
     public ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
+    Rectangle temp;
 
     Rectangle[] brownTiles = new Rectangle[32];
     private Rectangle[] grayTiles = new Rectangle[32];
@@ -67,6 +68,8 @@ public class ChessBoardModel {
         }
         drawPiecesOnBoard();
     }
+
+
 
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
@@ -139,10 +142,11 @@ public class ChessBoardModel {
     public void drawBoard(Pane canvas) {
         for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
             Node n = it.next();
-            if (n.toString().contains("Rectangle")){
-                it.remove();
+            it.remove();
             }
-        }
+
+
+
 
         double tileWidth = CHESS_BOARD_WIDTH / 8;
         double tileHeight = CHESS_BOARD_HEIGHT / 8;
@@ -191,6 +195,11 @@ public class ChessBoardModel {
             canvas.getChildren().add(r);
         }
 
+        if (this.pieceSelected){
+            canvas.getChildren().add(this.temp);
+        }
+
+
         this.canvas = canvas;
     }
 
@@ -222,12 +231,19 @@ public class ChessBoardModel {
         r.setFill(Color.LIGHTGOLDENRODYELLOW);
         r.setStroke(Color.RED);
         this.canvas.getChildren().add(r);
-        this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1; //this is the index of the selectedPiece because we technically replace it
-
-        redrawPieces(); //this prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
-        drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
-
+        this.temp = r;
         this.pieceSelected = true; //we have selected a piece
+
+
+        drawBoard(this.getCanvas()); //redrawing pieces because the selected tile outline overlaps the chess piece png.
+        redrawPieces(); //this prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
+
+
+
+
+
+
+
         this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots// }
         return this.potentialMoveSpots;
 
