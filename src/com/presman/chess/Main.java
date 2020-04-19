@@ -39,7 +39,6 @@ public class Main extends Application {
 
 
 
-        //TODO : FIX BUGS
         //TODO : ADD SOUND
         //TODO : IMPLEMENT SOCKETS FOR ONLINE GAMEPLAY AND HANDLE ONLINE STRUCTURE
 

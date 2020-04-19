@@ -31,7 +31,7 @@ public class ChessBoardModel {
     public int chessPieceRowIndex;
     private int pieceSelectedX;
     private int pieceSelectedY;
-    private int selectedPieceCanvasIndex;
+    public int selectedPieceCanvasIndex;
     public ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
 
     Rectangle[] brownTiles = new Rectangle[32];
@@ -50,14 +50,14 @@ public class ChessBoardModel {
     };
 
 
-    public ChessBoardModel(Pane canvas) {
+    public ChessBoardModel(Pane canvas)
+    {
         this.canvas = canvas;
         drawBoard(canvas);
     }
     public static ChessPiece[][] getChessBoard() {
         return chessBoardLayout;
     }
-
 
     public void redrawPieces(){
         for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
@@ -68,7 +68,6 @@ public class ChessBoardModel {
         }
         drawPiecesOnBoard();
     }
-
 
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
@@ -196,9 +195,7 @@ public class ChessBoardModel {
         this.canvas = canvas;
     }
 
-
     public ArrayList<Pair<Integer, Integer>> getSelectedPiece(MouseEvent m) {
-
         //get the indicies of the piece clicked for the array
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
@@ -206,70 +203,34 @@ public class ChessBoardModel {
         this.chessPieceRowIndex = ySpaceClickedForArrayIndex;
 
 
-        //if we already have a piece selected, here we redraw board and pieces to get remove the other highlight of the piece selected, better way of handling this is figuring out which piece is selected
-        if (pieceSelected) {
-            drawBoard(canvas);
-            drawPiecesOnBoard();
-            this.pieceSelected = false;
-            this.canvas.getChildren().remove(this.selectedPieceCanvasIndex); //removing the previously drawn tile that was selected as to not overflow the canvas
-        }
-
         //Get the position of the tile clicked so can modify tile and make it apparent that it has been selected
         int pieceSelectedX = ((int) (Math.floor(m.getX() / 75))) * 75;
         int pieceSelectedY = ((int) (Math.floor(m.getY() / 75))) * 75;
-
         this.pieceSelectedX = pieceSelectedX;
         this.pieceSelectedY = pieceSelectedY;
 
 
-
-
-
-        //the tiles are filled in the canvas from index 0 to 63, then the images go from 64 + 16
-        String getTileInfo = "";
         for (int i = 0; i < canvas.getChildren().size(); i++) {
             Node n = canvas.getChildren().get(i);
             if (n.toString().contains("Rectangle[x=" + (double) pieceSelectedX + ", y=" + (double) pieceSelectedY)) {
                 this.canvas.getChildren().remove(i); //remove the tile piece because we'll replace it with a redrawn updated one
-                getTileInfo = n.toString(); //need info of the tile in order to populate the replacing one
                 break;
             }
         }
-        //here we need to get tile colour
-        String[] tileColorParse = getTileInfo.split("fill");
-        String tileColor = tileColorParse[1].substring(1, tileColorParse[1].length() - 1);
-        //this try block handles if you click on the same spot as piece selected, weird bug
-        try{
-            tileColor = tileColor.split(",")[0];
-        }catch (Exception e){
 
-        }
-        boolean colorWhite = false;
-
-        if (tileColor.equals("0xffffffff")){
-            colorWhite = true;
-        }
         //"modifying" i.e adding the selected tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
-        if (colorWhite){
-            r.setFill(Color.LIGHTGOLDENRODYELLOW);
-        }else{
-            r.setFill(Color.LIGHTGOLDENRODYELLOW);
-        }
+        r.setFill(Color.LIGHTGOLDENRODYELLOW);
         r.setStroke(Color.RED);
         this.canvas.getChildren().add(r);
         this.selectedPieceCanvasIndex = this.canvas.getChildren().size() - 1; //this is the index of the selectedPiece because we technically replace it
 
-        //this prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
-        redrawPieces();
+        redrawPieces(); //this prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
         drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
 
         this.pieceSelected = true; //we have selected a piece
         this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots// }
         return this.potentialMoveSpots;
-
-
-
 
 
     }
