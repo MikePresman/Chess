@@ -19,26 +19,22 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        primaryStage.setTitle("Chess");
-
         //init chessboard drawing
         Pane canvas = new Pane();
-        ChessBoardModel chessBoard = new ChessBoardModel(canvas);
-        chessBoard.drawPiecesOnBoard();
-        canvas = chessBoard.getCanvas(); //unecessary since canvas is a reference type, but this is more explicit hence i like it
+        GameController gameController = new GameController(canvas);
 
         //setting the init scene - can not resize the stage
         Scene scene = new Scene(canvas,600, 600);
+        primaryStage.setTitle("Chess");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
 
 
 
-//Event-driven responses
-        //get mouse click for current player to see which piece they've chosen
+        //Event-driven responses
         scene.setOnMouseClicked(event -> {
-            chessBoard.getSelectedPiece(event);
+            gameController.handleEvent(event);
         });
 
 

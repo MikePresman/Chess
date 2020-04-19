@@ -40,21 +40,21 @@ public class ChessBoardModel {
     private Pane canvas;
     private static ChessPiece[][] chessBoardLayout = {
             {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
-            {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
+            {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.NONE, ChessPiece.BLACK_PAWN, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
-            {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN},
+            {ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.WHITE_PAWN, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
             {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
     };
+
 
     public ChessBoardModel(Pane canvas) {
         drawBoard(canvas);
     }
-
-    public ChessPiece[][] getChessBoard() {
-        return this.chessBoardLayout;
+    public static ChessPiece[][] getChessBoard() {
+        return chessBoardLayout;
     }
 
 
@@ -97,7 +97,7 @@ public class ChessBoardModel {
         }
     }
 
-    public static boolean isBlackPiece(int givenTile, int givenRow) {
+    public static boolean isBlackPiece(int givenRow, int givenTile) {
         switch (ChessBoardModel.chessBoardLayout[givenRow][givenTile]) {
             case BLACK_PAWN:
             case BLACK_QUEEN:
@@ -111,7 +111,7 @@ public class ChessBoardModel {
         }
     }
 
-    public static boolean isWhitePiece(int givenTile, int givenRow) {
+    public static boolean isWhitePiece(int givenRow, int givenTile) {
         switch (ChessBoardModel.chessBoardLayout[givenRow][givenTile]) {
             case WHITE_PAWN:
             case WHITE_QUEEN:
@@ -125,7 +125,7 @@ public class ChessBoardModel {
         }
     }
 
-    public static boolean isEmptyTile(int givenTile, int givenRow) {
+    public static boolean isEmptyTile(int givenRow, int givenTile) {
         if (ChessBoardModel.chessBoardLayout[givenRow][givenTile] == ChessPiece.NONE) {
             return true;
         }
@@ -199,7 +199,9 @@ public class ChessBoardModel {
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
 
-        //fix click bug
+
+
+        //TODO: WORK ON THIS LAST
         if (this.pieceSelected == true) {
                 for (Pair<Integer, Integer> e : this.potentialMoveSpots) {
                     if (e.getKey() == ySpaceClickedForArrayIndex && e.getValue() == xSpaceClickedForArrayIndex) {
@@ -220,12 +222,12 @@ public class ChessBoardModel {
 
 
         //here we are checking if they can click that space
-        if (isEmptyTile(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)) {
+        if (isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
             return;
         }
-        if (GameModel.currentPlayer == Player.BLACK && isWhitePiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)) {
+        if (GameModel.currentPlayer == Player.BLACK && isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
             return;
-        } else if (GameModel.currentPlayer == Player.WHITE && isBlackPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex)) {
+        } else if (GameModel.currentPlayer == Player.WHITE && isBlackPiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
             return;
         }
 
@@ -285,24 +287,20 @@ public class ChessBoardModel {
 
 
         //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
-        for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
-            Node n = it.next();
-            if (n instanceof ImageView) {
-                it.remove();
-            }
-        }
+        redrawPieces();
 
         drawPiecesOnBoard(); //redrawing pieces because the selected tile outline overlaps the chess piece png.
         this.pieceSelected = true; //we have selected a piece
 
 
-
         //NOTE: need to check whether there is a piece selected and where user clicked. IF Pieceselected && clicked on a potentialmovespot then we have to set this.potentialMovespots = null and move piece to that position
-        this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots
+        this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots// }
+
+
+
         drawPotentialMoveSpots(this.potentialMoveSpots);
 
         //check here if pieceselected is true and if click is on a potential move spot
-
 
     }
 
@@ -330,16 +328,7 @@ public class ChessBoardModel {
             r.setStroke(Color.BLACK);
             this.canvas.getChildren().add(r);
 
-
-            //this code prevents the chess pieces to overlap ontop of each other when below drawPiecesOnBoard() is called;
-            for (Iterator<Node> it = this.canvas.getChildren().iterator(); it.hasNext(); ) {
-                Node n = it.next();
-                if (n instanceof ImageView) {
-                    it.remove();
-                }
-            }
-
-            drawPiecesOnBoard(); //redrawing pieces because the selected tile overlaps the chess piece png if there is a piece there
+            redrawPieces();
         }
     }
 }
