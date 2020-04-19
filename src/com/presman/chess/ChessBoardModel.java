@@ -69,15 +69,13 @@ public class ChessBoardModel {
         drawPiecesOnBoard();
     }
 
-
-
     public void drawPiecesOnBoard() {
         for (int row = 0; row < 8; row++) {
             for (int tile = 0; tile < 8; tile++) {
                 if (chessBoardLayout[row][tile] == ChessPiece.NONE) {
                     continue;
                 }
-                String imageName = "src/assets/" + chessBoardLayout[row][tile] + ".png";
+                String imageName = "out/production/Chess/assets/" + chessBoardLayout[row][tile] + ".png";
                 ImageView imageView;
 
                 try {

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class GameController {
     private ChessBoardModel board;
-
     public GameController() {
 
     } //necessary for sample.fxml - leave it alone
@@ -49,8 +48,6 @@ public class GameController {
             this.board.drawBoard(this.board.getCanvas());
             this.board.redrawPieces();
         }
-
-
 
         //If spot clickable check
         if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {

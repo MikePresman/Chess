@@ -200,7 +200,6 @@ public class QueenModel implements ChessPieceMovement {
         }
 
 
-        //fix this
         if (selectedPiece == ChessPiece.WHITE_QUEEN) {
             //diagnonal down right
             for (int i = row + 1, j = tile + 1; i <= 7 && j <= 7; i++, j++) {
