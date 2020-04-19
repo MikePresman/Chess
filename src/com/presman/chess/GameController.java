@@ -30,13 +30,14 @@ public class GameController {
             return;
         }
 
-        int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
-        int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
+        int xSpaceClickedForArrayIndex= (int) (Math.floor(m.getX() / 75));
+        int ySpaceClickedForArrayIndex= (int) (Math.floor(m.getY() / 75));
 
 
+        
         if (this.board.pieceSelected == true) {
-            for (Pair<Integer, Integer> e : this.board.potentialMoveSpots) {
-                if (e.getKey() == ySpaceClickedForArrayIndex && e.getValue() == xSpaceClickedForArrayIndex) {
+            for (int i = 0; i < this.board.potentialMoveSpots.size(); i++){
+                if (this.board.potentialMoveSpots.get(i).getKey() == ySpaceClickedForArrayIndex && this.board.potentialMoveSpots.get(i).getValue() == xSpaceClickedForArrayIndex) {
                     ChessBoardModel.getChessBoard()[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex];
                     ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex] = ChessPiece.NONE;
                     this.board.drawBoard(this.board.getCanvas());
@@ -44,11 +45,14 @@ public class GameController {
                     this.board.pieceSelected = false;
                     GameModel.currentPlayer = GameModel.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
                     return;
-                } else {
-                    return;
-                }
 
+                }else if(this.board.potentialMoveSpots.indexOf(this.board.potentialMoveSpots.get(i)) == this.board.potentialMoveSpots.size() - 1){
+                    return;
+                }else{
+                    continue;
+                }
             }
+
         }
 
 

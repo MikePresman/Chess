@@ -40,10 +40,9 @@ public class Main extends Application {
 
 
         //TODO : FIX BUGS
-        //TODO : ORGANIZE FLOW
         //TODO : ADD SOUND
         //TODO : IMPLEMENT SOCKETS FOR ONLINE GAMEPLAY AND HANDLE ONLINE STRUCTURE
-        //split get potentialmovespots into sperate classes for each chess piece that implements interface - horizontalmovement, diagnonal etc.
+
 
 
 
