@@ -31,13 +31,20 @@ public class GameController {
         //Moving Piece Check
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
-        if (this.board.pieceSelected == true) {
+        Pair<Integer, Integer> t = new Pair<>(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex);
+        if (this.board.pieceSelected == true && this.board.potentialMoveSpots.contains(t)) {
             handleMovingPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex);
             return;
+        } else {
+            System.out.println("HERE");
+            this.board.drawBoard(this.board.getCanvas());
+            this.board.redrawPieces();
+
         }
 
+
         //If spot clickable check
-        if (this.board.pieceSelected == false && ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+        if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
             return;
         }
         if (GameModel.currentPlayer == Player.BLACK && ChessBoardModel.isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
@@ -62,10 +69,7 @@ public class GameController {
                 this.board.drawBoard(this.board.getCanvas());
                 this.board.redrawPieces();
                 this.board.pieceSelected = false;
-                this.board.getCanvas().getChildren().remove(this.board.selectedPieceCanvasIndex);
                 GameModel.currentPlayer = GameModel.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
-                return;
-            } else if (this.board.potentialMoveSpots.indexOf(this.board.potentialMoveSpots.get(i)) == this.board.potentialMoveSpots.size() - 1) {
                 return;
             } else {
                 continue;

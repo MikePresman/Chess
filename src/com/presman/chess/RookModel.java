@@ -44,7 +44,7 @@ public class RookModel implements ChessPieceMovement {
                 if (ChessBoardModel.isEmptyTile(row, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(row, i);
                     potentialMoveSpots.add(pair);
-                } else if (ChessBoardModel.isWhitePiece(row, i)) {
+                } else if (ChessBoardModel.isBlackPiece(row, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(row, i);
                     potentialMoveSpots.add(pair);
                     break;
@@ -58,7 +58,7 @@ public class RookModel implements ChessPieceMovement {
                 if (ChessBoardModel.isEmptyTile(row, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(row, i);
                     potentialMoveSpots.add(pair);
-                } else if (ChessBoardModel.isWhitePiece(row, i)) {
+                } else if (ChessBoardModel.isBlackPiece(row, i)) {
                     Pair<Integer, Integer> pair = new Pair<>(row, i);
                     potentialMoveSpots.add(pair);
                     break;
@@ -105,7 +105,7 @@ public class RookModel implements ChessPieceMovement {
                 if (ChessBoardModel.isEmptyTile(i, tile)) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
-                } else if (ChessBoardModel.isWhitePiece(i, tile)) {
+                } else if (ChessBoardModel.isBlackPiece(i, tile)) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
                     break;
@@ -119,7 +119,7 @@ public class RookModel implements ChessPieceMovement {
                 if (ChessBoardModel.isEmptyTile(i, tile)) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
-                } else if (ChessBoardModel.isWhitePiece(i, tile)) {
+                } else if (ChessBoardModel.isBlackPiece(i, tile)) {
                     Pair<Integer, Integer> pair = new Pair<>(i, tile);
                     potentialMoveSpots.add(pair);
                     break;
