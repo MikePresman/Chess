@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -75,6 +76,7 @@ public class ChessBoardModel {
                 if (chessBoardLayout[row][tile] == ChessPiece.NONE) {
                     continue;
                 }
+
                 String imageName = "out/production/Chess/assets/" + chessBoardLayout[row][tile] + ".png";
                 ImageView imageView;
 

@@ -32,6 +32,7 @@ public class GameModel {
         if (selectedPiece == ChessPiece.BLACK_ROOK || selectedPiece == ChessPiece.WHITE_ROOK) {
             RookModel rookMovement = new RookModel();
             rookMovement.verticalMovement(potentialMoveSpots, selectedPiece, row, tile);
+            rookMovement.horizontalMovement(potentialMoveSpots, selectedPiece, row, tile);
         }
 
         //Knight
