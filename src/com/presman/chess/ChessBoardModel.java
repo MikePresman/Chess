@@ -77,7 +77,7 @@ public class ChessBoardModel {
                     continue;
                 }
 
-                String imageName = "out/production/Chess/assets/" + chessBoardLayout[row][tile] + ".png";
+                String imageName = "src/assets/" + chessBoardLayout[row][tile] + ".png";
                 ImageView imageView;
 
                 try {
