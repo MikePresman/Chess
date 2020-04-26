@@ -229,7 +229,7 @@ public class ChessBoardModel {
         //"modifying" i.e adding the selected tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
         r.setFill(Color.LIGHTGOLDENRODYELLOW);
-        r.setStroke(Color.RED);
+        r.setStroke(Color.BLACK);
         this.canvas.getChildren().add(r);
         this.temp = r;
         this.pieceSelected = true; //we have selected a piece

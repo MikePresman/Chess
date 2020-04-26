@@ -35,34 +35,35 @@ public class GameController {
             handleMovingPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex);
             return;
         } else if (this.board.pieceSelected && !this.board.potentialMoveSpots.contains(t)) {
-            if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+            //checking if the piece the select is not a corresponding potential move spot and if it is even a valid spot to change the piece selection to
+            if (!isClickableSpot(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex))
                 return;
-            }
-            if (GameModel.currentPlayer == Player.BLACK && ChessBoardModel.isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-                return;
-            } else if (GameModel.currentPlayer == Player.WHITE && ChessBoardModel.isBlackPiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-                return;
-            }
 
             this.board.pieceSelected = false;
             this.board.drawBoard(this.board.getCanvas());
             this.board.redrawPieces();
         }
 
-        //If spot clickable check
-        if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+        //checking if the piece to be selected is a valid click
+        if (!isClickableSpot(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex))
             return;
-        }
-        if (GameModel.currentPlayer == Player.BLACK && ChessBoardModel.isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-            return;
-        } else if (GameModel.currentPlayer == Player.WHITE && ChessBoardModel.isBlackPiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
-            return;
-        }
-
 
         //getSelectedPiece
         ArrayList<Pair<Integer, Integer>> potenialSpots = this.board.getSelectedPiece(m);
         this.board.drawPotentialMoveSpots(potenialSpots);
+    }
+
+    public boolean isClickableSpot(int ySpaceClickedForArrayIndex, int xSpaceClickedForArrayIndex){
+        //If spot clickable check
+        if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+            return false;
+        }
+        if (GameModel.currentPlayer == Player.BLACK && ChessBoardModel.isWhitePiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+            return false;
+        } else if (GameModel.currentPlayer == Player.WHITE && ChessBoardModel.isBlackPiece(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
+            return false;
+        }
+        return true;
     }
 
     public void handleMovingPiece(int xSpaceClickedForArrayIndex, int ySpaceClickedForArrayIndex) {
