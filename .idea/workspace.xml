@@ -6,8 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="">
+    <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="added a new function for DRY">
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessPiece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessPiece.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" afterDir="false" />
     </list>
@@ -46,7 +51,7 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="chess" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/Chess_jar" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -57,6 +62,7 @@
       <recent name="com.presman.chess" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="B:\Dev\Java\Chess\out\artifacts\Chess_jar" />
       <recent name="B:\Dev\Java\Chess\out" />
     </key>
   </component>
@@ -359,11 +365,17 @@
       <option name="project" value="LOCAL" />
       <updated>1587342000065</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="added a new function for DRY">
+      <created>1587891877259</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1587891877259</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="chessboardlayout row was copied" />
     <MESSAGE value="drawPotentialMoveSpots begun, Finished basic drawing" />
     <MESSAGE value="making progress on getPotentialMoveSpots function" />
     <MESSAGE value="implemented rook possible moves" />
@@ -388,7 +400,8 @@
     <MESSAGE value="fixed queen movement bug" />
     <MESSAGE value="built jar file for it" />
     <MESSAGE value="fixed rook" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed rook" />
+    <MESSAGE value="added a new function for DRY" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a new function for DRY" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1266" y="414" key="#Notifications" timestamp="1587341891876">
@@ -404,11 +417,11 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587262900819" />
-    <state x="-1163" y="512" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587328551845">
-      <screen x="-1920" y="144" width="1920" height="1050" />
+    <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588089095661">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1163" y="512" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587328551845" />
-    <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587326809440" />
+    <state x="1009" y="494" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588089095661" />
     <state x="1127" y="601" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1587170788646">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -417,38 +430,38 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1010" y="451" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587170959738" />
-    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1587891875800">
+    <state x="946" y="303" key="CommitChangelistDialog2" timestamp="1588089660502">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1210" y="370" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587341998778" />
-    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587891875800" />
+    <state x="946" y="303" key="CommitChangelistDialog2/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588089660502" />
     <state x="1060" y="449" key="FileChooserDialogImpl" timestamp="1585587441411">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
-    <state width="2561" height="37" key="GridCell.Tab.0.bottom" timestamp="1587779195050">
+    <state width="2561" height="86" key="GridCell.Tab.0.bottom" timestamp="1588090573468">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012075" />
-    <state width="1927" height="170" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587327265476" />
+    <state width="2561" height="86" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="2561" height="37" key="GridCell.Tab.0.center" timestamp="1587779195050">
+    <state width="2561" height="86" key="GridCell.Tab.0.center" timestamp="1588090573468">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012075" />
-    <state width="1927" height="170" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587327265476" />
+    <state width="2561" height="86" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="2561" height="37" key="GridCell.Tab.0.left" timestamp="1587779195050">
+    <state width="2561" height="86" key="GridCell.Tab.0.left" timestamp="1588090573468">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012074" />
-    <state width="1927" height="170" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587327265476" />
+    <state width="2561" height="86" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="2561" height="37" key="GridCell.Tab.0.right" timestamp="1587779195050">
+    <state width="2561" height="86" key="GridCell.Tab.0.right" timestamp="1588090573468">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012075" />
-    <state width="1927" height="170" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587327265476" />
+    <state width="2561" height="86" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
     <state width="2561" height="382" key="GridCell.Tab.1.bottom" timestamp="1587315196993">
       <screen x="0" y="0" width="2560" height="1410" />
@@ -466,11 +479,11 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="2561" height="382" key="GridCell.Tab.1.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587315196993" />
-    <state x="-1333" y="342" key="SettingsEditor" timestamp="1587328556055">
-      <screen x="-1920" y="144" width="1920" height="1050" />
+    <state x="783" y="350" key="SettingsEditor" timestamp="1588089673697">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="-1333" y="342" key="SettingsEditor/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587328556055" />
-    <state x="783" y="350" key="SettingsEditor/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587326816374" />
+    <state x="783" y="350" key="SettingsEditor/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588089673697" />
     <state x="1001" y="446" width="555" height="524" key="StructurePopup" timestamp="1587098751516">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -496,10 +509,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1018" y="162" width="736" height="606" key="find.popup/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587172064319" />
-    <state x="1007" y="508" key="git4idea.merge.GitPullDialog" timestamp="1586228802248">
+    <state x="1007" y="508" key="git4idea.merge.GitPullDialog" timestamp="1587953982283">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1007" y="508" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1586228802248" />
+    <state x="1007" y="508" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1587953982283" />
     <state x="662" y="331" key="new project wizard" timestamp="1586876952332">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>

@@ -53,6 +53,8 @@ public class GameController {
         this.board.drawPotentialMoveSpots(potenialSpots);
     }
 
+
+
     public boolean isClickableSpot(int ySpaceClickedForArrayIndex, int xSpaceClickedForArrayIndex){
         //If spot clickable check
         if (ChessBoardModel.isEmptyTile(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex)) {
@@ -65,6 +67,10 @@ public class GameController {
         }
         return true;
     }
+
+
+
+
 
     public void handleMovingPiece(int xSpaceClickedForArrayIndex, int ySpaceClickedForArrayIndex) {
         for (int i = 0; i < this.board.potentialMoveSpots.size(); i++) {

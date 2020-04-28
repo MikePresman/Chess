@@ -9,9 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -77,16 +75,26 @@ public class ChessBoardModel {
                     continue;
                 }
 
-                String imageName = "src/assets/" + chessBoardLayout[row][tile] + ".png";
-                ImageView imageView;
 
-                try {
-                    FileInputStream input = new FileInputStream(imageName);
-                    Image image = new Image(input);
-                    imageView = new ImageView(image);
-                } catch (FileNotFoundException e) {
-                    System.out.println("Chess Piece not Found to Draw" + imageName.toString()); //should use logging later
-                    return;
+
+
+                String imageName = "assets/" + chessBoardLayout[row][tile] + ".png"; //for production
+                ImageView imageView = null;
+
+                String imageNameDev = "src/assets/" + chessBoardLayout[row][tile] + ".png"; //for development
+                boolean success = false;
+
+                while (!success) {
+                    try {
+                        FileInputStream input = new FileInputStream(imageName);
+                        Image image = new Image(input);
+                        imageView = new ImageView(image);
+                        imageName = imageNameDev;
+                        success = true;
+                    } catch (FileNotFoundException e) {
+                        imageName = imageNameDev;
+                        continue;
+                    }
                 }
 
                 double currentTileX = tile * CHESS_BOARD_WIDTH / 8; //current tile spot, starting at 0
