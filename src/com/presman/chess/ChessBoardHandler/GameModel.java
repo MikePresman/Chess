@@ -1,4 +1,4 @@
-package com.presman.chess;
+package com.presman.chess.ChessBoardHandler;
 import com.presman.chess.ChessPieceLogic.*;
 import javafx.util.Pair;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.presman.chess;
+package com.presman.chess.ChessBoardHandler;
 
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -20,9 +20,7 @@ public class ChessBoardModel {
     public boolean pieceSelected = false;
     public int chessPieceTileIndex;
     public int chessPieceRowIndex;
-    private int pieceSelectedX;
-    private int pieceSelectedY;
-    public int selectedPieceCanvasIndex;
+
     public ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
     private Rectangle temp;
 
@@ -66,9 +64,6 @@ public class ChessBoardModel {
                 if (chessBoardLayout[row][tile] == ChessPiece.NONE) {
                     continue;
                 }
-
-
-
 
                 String imageName = "assets/" + chessBoardLayout[row][tile] + ".png"; //for production
                 ImageView imageView = null;
@@ -214,9 +209,6 @@ public class ChessBoardModel {
         //Get the position of the tile clicked so can modify tile and make it apparent that it has been selected
         int pieceSelectedX = ((int) (Math.floor(m.getX() / 75))) * 75;
         int pieceSelectedY = ((int) (Math.floor(m.getY() / 75))) * 75;
-        this.pieceSelectedX = pieceSelectedX;
-        this.pieceSelectedY = pieceSelectedY;
-
 
         for (int i = 0; i < canvas.getChildren().size(); i++) {
             Node n = canvas.getChildren().get(i);

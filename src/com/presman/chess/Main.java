@@ -1,5 +1,6 @@
 package com.presman.chess;
 
+import com.presman.chess.ChessBoardHandler.GameController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

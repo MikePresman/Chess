@@ -1,4 +1,4 @@
-package com.presman.chess;
+package com.presman.chess.ChessBoardHandler;
 
 public enum ChessPiece{
     BLACK_PAWN, BLACK_ROOK, BLACK_KNIGHT, BLACK_QUEEN, BLACK_KING, BLACK_BISHOP,

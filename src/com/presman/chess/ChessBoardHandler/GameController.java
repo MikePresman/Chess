@@ -1,15 +1,11 @@
-package com.presman.chess;
+package com.presman.chess.ChessBoardHandler;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.presman.chess.ChessBoardHandler.Player;
 import javafx.scene.layout.Pane;
 
 
 import javafx.scene.input.MouseEvent;
 import javafx.util.Pair;
-
-import java.util.ArrayList;
-
-
 
 
 public class GameController {

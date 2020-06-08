@@ -1,6 +1,6 @@
 package com.presman.chess.ChessPieceLogic;
 
-import com.presman.chess.ChessPiece;
+import com.presman.chess.ChessBoardHandler.ChessPiece;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
