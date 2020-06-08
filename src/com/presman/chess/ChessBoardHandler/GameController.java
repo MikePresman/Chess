@@ -29,15 +29,9 @@ public class GameController {
         //Moving Piece Check
         int tileClickedIndex = (int) (Math.floor(m.getX() / 75));
         int rowClickedIndex = (int) (Math.floor(m.getY() / 75));
-        System.out.println("CLICKED PIECE");
-        System.out.println(tileClickedIndex);
-        System.out.println(rowClickedIndex);
-
+        
         if (this.board.potentialMoveSpots != null) {
-            System.out.println("POTENTIAL MOVE SPOTS");
             for (Pair<Integer, Integer> e : this.board.potentialMoveSpots) {
-                System.out.println(e.getKey());
-                System.out.println(e.getValue());
                 int potentialRowIndex = e.getKey(); //row
                 int potentialTileIndex = e.getValue();
                 if (potentialRowIndex == rowClickedIndex && potentialTileIndex == tileClickedIndex && this.board.pieceSelected) {
