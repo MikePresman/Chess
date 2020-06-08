@@ -1,26 +1,12 @@
-package com.presman.chess;
+package com.presman.chess.ChessPieceLogic;
 
+import com.presman.chess.ChessBoardModel;
+import com.presman.chess.ChessPiece;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class KnightModel implements UniqueChessPieceMovement {
-
-    @Override
-    public void horizontalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-
-    }
-
-    @Override
-    public void verticalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-
-    }
-
-    @Override
-    public void diagonalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-
-    }
-
+public class KnightModel implements UniqueMovement {
     @Override
     public void uniqueMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
 

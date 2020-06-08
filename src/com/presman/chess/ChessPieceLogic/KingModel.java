@@ -1,10 +1,12 @@
-package com.presman.chess;
+package com.presman.chess.ChessPieceLogic;
 
+import com.presman.chess.ChessBoardModel;
+import com.presman.chess.ChessPiece;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class KingModel implements ChessPieceMovement {
+public class KingModel implements Movement {
 
     @Override
     public void horizontalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {

@@ -13,14 +13,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-enum ChessPiece{
-    BLACK_PAWN, BLACK_ROOK, BLACK_KNIGHT, BLACK_QUEEN, BLACK_KING, BLACK_BISHOP,
-
-    WHITE_PAWN, WHITE_ROOK, WHITE_KNIGHT, WHITE_QUEEN, WHITE_KING, WHITE_BISHOP,
-
-    NONE
-}
-
 public class ChessBoardModel {
     private final double CHESS_BOARD_HEIGHT = 600;
     private final double CHESS_BOARD_WIDTH = 600;
