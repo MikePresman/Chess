@@ -29,7 +29,7 @@ public class GameController {
         //Moving Piece Check
         int tileClickedIndex = (int) (Math.floor(m.getX() / 75));
         int rowClickedIndex = (int) (Math.floor(m.getY() / 75));
-        
+
         if (this.board.potentialMoveSpots != null) {
             for (Pair<Integer, Integer> e : this.board.potentialMoveSpots) {
                 int potentialRowIndex = e.getKey(); //row

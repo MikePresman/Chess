@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ChessBoardModel {
+    private final Color GRAY_COLOR = Color.rgb(173,216,230);
     private final double CHESS_BOARD_HEIGHT = 600;
     private final double CHESS_BOARD_WIDTH = 600;
 
@@ -140,9 +141,6 @@ public class ChessBoardModel {
             it.remove();
             }
 
-
-
-
         double tileWidth = CHESS_BOARD_WIDTH / 8;
         double tileHeight = CHESS_BOARD_HEIGHT / 8;
 
@@ -154,7 +152,7 @@ public class ChessBoardModel {
         for (int tile = 0; tile < 32; tile++) {
             if (row % 2 == 0) {
                 Rectangle brownTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
-                brownTile.setFill(Color.GRAY);
+                brownTile.setFill(GRAY_COLOR);
                 brownTiles[tile] = brownTile;
                 tileXPosition += tileWidth;
                 Rectangle grayTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
@@ -169,7 +167,7 @@ public class ChessBoardModel {
                 tileXPosition += tileWidth;
 
                 Rectangle brownTile = new Rectangle(tileXPosition, tileYPosition, tileWidth, tileHeight);
-                brownTile.setFill(Color.GRAY);
+                brownTile.setFill(GRAY_COLOR);
 
                 brownTiles[tile] = brownTile;
                 tileXPosition += tileWidth;
@@ -220,7 +218,7 @@ public class ChessBoardModel {
 
         //"modifying" i.e adding the selected tile/rectangle on the canvas
         Rectangle r = new Rectangle(pieceSelectedX, pieceSelectedY, 75, 75);
-        r.setFill(Color.LIGHTGOLDENRODYELLOW);
+        r.setFill(Color.rgb(255,255,237));
         r.setStroke(Color.BLACK);
         this.canvas.getChildren().add(r);
         this.temp = r;
@@ -255,7 +253,7 @@ public class ChessBoardModel {
             }
 
             Rectangle r = new Rectangle(canvasXPosition, canvasYPosition, 75, 75);
-            r.setFill(Color.LIGHTGOLDENRODYELLOW);
+            r.setFill(Color.rgb(255,255,237));
             r.setStroke(Color.BLACK);
             this.canvas.getChildren().add(r);
 
