@@ -35,9 +35,12 @@ public class Main extends Application {
         scene.setOnMouseClicked(event -> {
             gameController.handleEvent(event);
         });
-
-
         }
+
+
+
+
+
     }
 
 

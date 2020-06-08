@@ -1,5 +1,6 @@
 package com.presman.chess;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.scene.layout.Pane;
 
 
@@ -7,6 +8,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
+
+
 
 
 public class GameController {
@@ -28,29 +31,29 @@ public class GameController {
         }
 
         //Moving Piece Check
-        int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
-        int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
-        Pair<Integer, Integer> t = new Pair<>(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex);
-        if (this.board.pieceSelected == true && this.board.potentialMoveSpots.contains(t)) {
-            handleMovingPiece(xSpaceClickedForArrayIndex, ySpaceClickedForArrayIndex);
-            return;
-        } else if (this.board.pieceSelected && !this.board.potentialMoveSpots.contains(t)) {
-            //checking if the piece the select is not a corresponding potential move spot and if it is even a valid spot to change the piece selection to
-            if (!isClickableSpot(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex))
-                return;
+        int tileClickedIndex = (int) (Math.floor(m.getX() / 75));
+        int rowClickedIndex = (int) (Math.floor(m.getY() / 75));
+        System.out.println("CLICKED PIECE");
+        System.out.println(tileClickedIndex);
+        System.out.println(rowClickedIndex);
 
-            this.board.pieceSelected = false;
-            this.board.drawBoard(this.board.getCanvas());
-            this.board.redrawPieces();
+        if (this.board.potentialMoveSpots != null) {
+            System.out.println("POTENTIAL MOVE SPOTS");
+            for (Pair<Integer, Integer> e : this.board.potentialMoveSpots) {
+                System.out.println(e.getKey());
+                System.out.println(e.getValue());
+                int potentialRowIndex = e.getKey(); //row
+                int potentialTileIndex = e.getValue();
+                if (potentialRowIndex == rowClickedIndex && potentialTileIndex == tileClickedIndex && this.board.pieceSelected) {
+                    handleMovingPiece(rowClickedIndex, tileClickedIndex);
+                    return;
+                }
+            }
         }
-
-        //checking if the piece to be selected is a valid click
-        if (!isClickableSpot(ySpaceClickedForArrayIndex, xSpaceClickedForArrayIndex))
+        if (!isClickableSpot(rowClickedIndex, tileClickedIndex))
             return;
+        this.board.getSelectedPiece(m);
 
-        //getSelectedPiece
-        ArrayList<Pair<Integer, Integer>> potenialSpots = this.board.getSelectedPiece(m);
-        this.board.drawPotentialMoveSpots(potenialSpots);
     }
 
 
@@ -72,7 +75,7 @@ public class GameController {
 
 
 
-    public void handleMovingPiece(int xSpaceClickedForArrayIndex, int ySpaceClickedForArrayIndex) {
+    public void handleMovingPiece(int ySpaceClickedForArrayIndex, int xSpaceClickedForArrayIndex) {
         for (int i = 0; i < this.board.potentialMoveSpots.size(); i++) {
             if (this.board.potentialMoveSpots.get(i).getKey() == ySpaceClickedForArrayIndex && this.board.potentialMoveSpots.get(i).getValue() == xSpaceClickedForArrayIndex) {
                 ChessBoardModel.getChessBoard()[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex];

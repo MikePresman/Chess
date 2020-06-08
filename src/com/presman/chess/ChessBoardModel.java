@@ -211,7 +211,7 @@ public class ChessBoardModel {
         this.canvas = canvas;
     }
 
-    public ArrayList<Pair<Integer, Integer>> getSelectedPiece(MouseEvent m) {
+    public void getSelectedPiece(MouseEvent m) {
         //get the indicies of the piece clicked for the array
         int xSpaceClickedForArrayIndex = (int) (Math.floor(m.getX() / 75));
         int ySpaceClickedForArrayIndex = (int) (Math.floor(m.getY() / 75));
@@ -248,7 +248,7 @@ public class ChessBoardModel {
 
 
         this.potentialMoveSpots = GameModel.getPotentialMoveSpots(this.getChessBoard(), this.chessPieceRowIndex, this.chessPieceTileIndex); //this will handle potential move spots// }
-        return this.potentialMoveSpots;
+        drawPotentialMoveSpots(this.potentialMoveSpots);
 
 
     }

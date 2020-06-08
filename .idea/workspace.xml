@@ -5,26 +5,35 @@
       <artifact name="Chess:jar" />
     </artifacts-to-build>
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cc1e4f30-ebed-4830-b6c8-0fb8fa2411b6" name="Default Changelist" comment="added a new function for DRY">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessPieceLogic/Movement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessPieceLogic/UniqueMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chess.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Chess.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/BishopModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/BishopModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessBoardModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessPiece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessPiece.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessPieceMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/ChessPieceMovement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/GameModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/GameModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/KingModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/KingModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/KnightModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/KnightModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/PawnModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/PawnModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/QueenModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/QueenModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/RookModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/RookModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/UniqueChessPieceMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/com/presman/chess/UniqueChessPieceMovement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/ChessBoardModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/presman/chess/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/presman/chess/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -386,6 +395,17 @@
     <option name="localTasksCounter" value="41" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="drawPotentialMoveSpots begun, Finished basic drawing" />
     <MESSAGE value="making progress on getPotentialMoveSpots function" />
@@ -456,34 +476,38 @@
     </state>
     <state x="1060" y="449" key="FileChooserDialogImpl/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1585587441411" />
     <state x="795" y="437" width="725" height="491" key="FileChooserDialogImpl/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591626964690" />
-    <state width="1874" height="284" key="GridCell.Tab.0.bottom" timestamp="1591627250600">
-      <screen x="0" y="137" width="1920" height="943" />
+    <state width="2514" height="284" key="GridCell.Tab.0.bottom" timestamp="1591628562816">
+      <screen x="1920" y="110" width="2560" height="1440" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012075" />
     <state width="2561" height="86" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="1874" height="284" key="GridCell.Tab.0.bottom/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627250600" />
-    <state width="1874" height="284" key="GridCell.Tab.0.center" timestamp="1591627250599">
-      <screen x="0" y="137" width="1920" height="943" />
+    <state width="1874" height="284" key="GridCell.Tab.0.bottom/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627320098" />
+    <state width="2514" height="284" key="GridCell.Tab.0.bottom/0.137.1920.943/1920.110.2560.1440@1920.110.2560.1440" timestamp="1591628562816" />
+    <state width="2514" height="284" key="GridCell.Tab.0.center" timestamp="1591628562816">
+      <screen x="1920" y="110" width="2560" height="1440" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012075" />
     <state width="2561" height="86" key="GridCell.Tab.0.center/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="1874" height="284" key="GridCell.Tab.0.center/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627250599" />
-    <state width="1874" height="284" key="GridCell.Tab.0.left" timestamp="1591627250599">
-      <screen x="0" y="137" width="1920" height="943" />
+    <state width="1874" height="284" key="GridCell.Tab.0.center/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627320098" />
+    <state width="2514" height="284" key="GridCell.Tab.0.center/0.137.1920.943/1920.110.2560.1440@1920.110.2560.1440" timestamp="1591628562816" />
+    <state width="2514" height="284" key="GridCell.Tab.0.left" timestamp="1591628562816">
+      <screen x="1920" y="110" width="2560" height="1440" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012074" />
     <state width="2561" height="86" key="GridCell.Tab.0.left/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="1874" height="284" key="GridCell.Tab.0.left/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627250599" />
-    <state width="1874" height="284" key="GridCell.Tab.0.right" timestamp="1591627250599">
-      <screen x="0" y="137" width="1920" height="943" />
+    <state width="1874" height="284" key="GridCell.Tab.0.left/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627320098" />
+    <state width="2514" height="284" key="GridCell.Tab.0.left/0.137.1920.943/1920.110.2560.1440@1920.110.2560.1440" timestamp="1591628562816" />
+    <state width="2514" height="284" key="GridCell.Tab.0.right" timestamp="1591628562816">
+      <screen x="1920" y="110" width="2560" height="1440" />
     </state>
     <state width="1921" height="37" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@-1920.144.1920.1050" timestamp="1587342012075" />
     <state width="2561" height="86" key="GridCell.Tab.0.right/0.0.2560.1410/-1920.144.1920.1050@0.0.2560.1410" timestamp="1588090573468" />
     <state width="2561" height="37" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1587779195050" />
-    <state width="1874" height="284" key="GridCell.Tab.0.right/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627250599" />
+    <state width="1874" height="284" key="GridCell.Tab.0.right/0.137.1920.943/1920.110.2560.1440@0.137.1920.943" timestamp="1591627320098" />
+    <state width="2514" height="284" key="GridCell.Tab.0.right/0.137.1920.943/1920.110.2560.1440@1920.110.2560.1440" timestamp="1591628562816" />
     <state width="1874" height="351" key="GridCell.Tab.1.bottom" timestamp="1591627153159">
       <screen x="0" y="137" width="1920" height="943" />
     </state>
