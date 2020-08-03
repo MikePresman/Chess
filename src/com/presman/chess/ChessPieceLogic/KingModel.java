@@ -6,110 +6,49 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 
-public class KingModel implements Movement {
+public class KingModel {
 
-    @Override
-    public void horizontalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-        if (selectedPiece == ChessPiece.BLACK_KING) {
-            if (row + 1 <= 7 && ChessBoardModel.isWhitePiece(row + 1, tile) || row + 1 <= 7 && ChessBoardModel.isEmptyTile(row + 1, tile)) {
-                Pair<Integer, Integer> pair = new Pair<>(row + 1, tile);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row - 1 >= 0 && ChessBoardModel.isWhitePiece(row - 1, tile) || row - 1 >= 0 && ChessBoardModel.isEmptyTile(row - 1, tile)) {
-                Pair<Integer, Integer> pair = new Pair<>(row - 1, tile);
-                potentialMoveSpots.add(pair);
-            }
+    public void horizontalMovement(ChessPositionSet potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
+        if (row + 1 <= 7 && ChessBoardModel.isEmptyTile(row + 1, tile) || row + 1 <= 7 && ChessBoardModel.isEnemy(selectedPiece, row + 1, tile)) {
+            potentialMoveSpots.add(row + 1, tile);
         }
 
-        if (selectedPiece == ChessPiece.WHITE_KING) {
-            if (row + 1 <= 7 && ChessBoardModel.isBlackPiece(row + 1, tile) || row + 1 <= 7 && ChessBoardModel.isEmptyTile(row + 1, tile)) {
-                Pair<Integer, Integer> pair = new Pair<>(row + 1, tile);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row - 1 >= 0 && ChessBoardModel.isBlackPiece(row - 1, tile) || row - 1 >= 0 && ChessBoardModel.isEmptyTile(row - 1, tile)) {
-                Pair<Integer, Integer> pair = new Pair<>(row - 1, tile);
-                potentialMoveSpots.add(pair);
-            }
-        }
-
-    }
-
-    @Override
-    public void verticalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-        if (selectedPiece == ChessPiece.BLACK_KING) {
-            if (tile - 1 >= 0 && ChessBoardModel.isWhitePiece(row, tile - 1) || tile - 1 >= 0 && ChessBoardModel.isEmptyTile(row, tile - 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row, tile - 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (tile + 1 <= 7 && ChessBoardModel.isWhitePiece(row, tile + 1) || tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row, tile + 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row, tile + 1);
-                potentialMoveSpots.add(pair);
-            }
-        }
-
-        if (selectedPiece == ChessPiece.WHITE_KING){
-            if (tile - 1 >= 0 && ChessBoardModel.isBlackPiece(row, tile - 1) || tile - 1 >= 0 && ChessBoardModel.isEmptyTile(row, tile - 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row, tile - 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (tile + 1 <= 7 && ChessBoardModel.isBlackPiece(row, tile + 1) || tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row, tile + 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row, tile + 1);
-                potentialMoveSpots.add(pair);
-            }
+        if (row - 1 >= 0 && ChessBoardModel.isEmptyTile(row - 1, tile) || row - 1 >= 0 && ChessBoardModel.isEnemy(selectedPiece, row - 1, tile)) {
+            potentialMoveSpots.add(row - 1, tile);
         }
     }
 
-    @Override
-    public void diagonalMovement(ArrayList<Pair<Integer, Integer>> potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-        if (selectedPiece == ChessPiece.BLACK_KING) {
-            if (tile - 1 >= 0 && row - 1 >= 0 && ChessBoardModel.isWhitePiece(row - 1, tile - 1) || tile - 1 >= 0 && row - 1 >= 0 && ChessBoardModel.isEmptyTile(row - 1, tile - 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row - 1, tile - 1);
-                potentialMoveSpots.add(pair);
-            }
 
-            if (row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isWhitePiece(row + 1, tile + 1) || row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row + 1, tile + 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row + 1, tile + 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isWhitePiece(row - 1, tile + 1) || row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row - 1, tile + 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row - 1, tile + 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isWhitePiece(row + 1, tile - 1) || row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isEmptyTile(row + 1, tile - 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row + 1, tile - 1);
-                potentialMoveSpots.add(pair);
-            }
+    public void verticalMovement(ChessPositionSet potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
+        if (tile - 1 >= 0 && ChessBoardModel.isEmptyTile(row, tile - 1) || tile - 1 >= 0 && ChessBoardModel.isEnemy(selectedPiece, row, tile - 1)) {
+            potentialMoveSpots.add(row, tile - 1);
         }
 
-        if (selectedPiece == ChessPiece.WHITE_KING) {
-            if (tile - 1 >= 0 && row - 1 >= 0 && ChessBoardModel.isBlackPiece(row - 1, tile - 1) || tile - 1 >= 0 && row - 1 >= 0 && ChessBoardModel.isEmptyTile(row - 1, tile - 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row - 1, tile - 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isBlackPiece(row + 1, tile + 1) || row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row + 1, tile + 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row + 1, tile + 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isBlackPiece(row - 1, tile + 1) || row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row - 1, tile + 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row - 1, tile + 1);
-                potentialMoveSpots.add(pair);
-            }
-
-            if (row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isBlackPiece(row + 1, tile - 1) || row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isEmptyTile(row + 1, tile - 1)) {
-                Pair<Integer, Integer> pair = new Pair<>(row + 1, tile - 1);
-                potentialMoveSpots.add(pair);
-            }
+        if (tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row, tile + 1) || tile + 1 <= 7 && ChessBoardModel.isEnemy(selectedPiece, row, tile + 1)) {
+            potentialMoveSpots.add(row, tile + 1);
         }
     }
 
+
+    public void diagonalMovement(ChessPositionSet potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
+        if (tile - 1 >= 0 && row - 1 >= 0 && ChessBoardModel.isEmptyTile(row - 1, tile - 1) || tile - 1 >= 0 && row - 1 >= 0 && ChessBoardModel.isEnemy(selectedPiece, row - 1, tile - 1)) {
+            potentialMoveSpots.add(row - 1, tile - 1);
+        }
+
+        if (row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row + 1, tile + 1) || row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isEnemy(selectedPiece, row + 1, tile + 1)) {
+            potentialMoveSpots.add(row + 1, tile + 1);
+        }
+
+        if (row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isEmptyTile(row - 1, tile + 1) || row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isEnemy(selectedPiece, row - 1, tile + 1)) {
+            potentialMoveSpots.add(row - 1, tile + 1);
+        }
+
+        if (row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isEmptyTile(row + 1, tile - 1) || row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isEnemy(selectedPiece, row + 1, tile - 1)) {
+            potentialMoveSpots.add(row + 1, tile - 1);
+        }
+    }
 }
+
+
 
 

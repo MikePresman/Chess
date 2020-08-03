@@ -1,6 +1,7 @@
 package com.presman.chess.ChessBoardHandler;
 
 import com.presman.chess.ChessBoardHandler.Player;
+import com.presman.chess.ChessPieceLogic.Node;
 import javafx.scene.layout.Pane;
 
 
@@ -31,9 +32,9 @@ public class GameController {
         int rowClickedIndex = (int) (Math.floor(m.getY() / 75));
 
         if (this.board.potentialMoveSpots != null) {
-            for (Pair<Integer, Integer> e : this.board.potentialMoveSpots) {
-                int potentialRowIndex = e.getKey(); //row
-                int potentialTileIndex = e.getValue();
+            for (Node e : this.board.potentialMoveSpots) {
+                int potentialRowIndex = e.getRow(); //row
+                int potentialTileIndex = e.getTile();
                 if (potentialRowIndex == rowClickedIndex && potentialTileIndex == tileClickedIndex && this.board.pieceSelected) {
                     handleMovingPiece(rowClickedIndex, tileClickedIndex);
                     return;
@@ -67,7 +68,7 @@ public class GameController {
 
     public void handleMovingPiece(int ySpaceClickedForArrayIndex, int xSpaceClickedForArrayIndex) {
         for (int i = 0; i < this.board.potentialMoveSpots.size(); i++) {
-            if (this.board.potentialMoveSpots.get(i).getKey() == ySpaceClickedForArrayIndex && this.board.potentialMoveSpots.get(i).getValue() == xSpaceClickedForArrayIndex) {
+            if (this.board.potentialMoveSpots.get(i).getRow() == ySpaceClickedForArrayIndex && this.board.potentialMoveSpots.get(i).getTile() == xSpaceClickedForArrayIndex) {
                 ChessBoardModel.getChessBoard()[ySpaceClickedForArrayIndex][xSpaceClickedForArrayIndex] = ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex];
                 ChessBoardModel.getChessBoard()[this.board.chessPieceRowIndex][this.board.chessPieceTileIndex] = ChessPiece.NONE;
                 this.board.pieceSelected = false;

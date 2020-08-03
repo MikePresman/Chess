@@ -1,5 +1,6 @@
 package com.presman.chess.ChessBoardHandler;
 
+import com.presman.chess.ChessPieceLogic.ChessPositionSet;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,7 +23,7 @@ public class ChessBoardModel {
     public int chessPieceTileIndex;
     public int chessPieceRowIndex;
 
-    public ArrayList<Pair<Integer, Integer>> potentialMoveSpots;
+    public ChessPositionSet potentialMoveSpots;
     private Rectangle temp;
 
     Rectangle[] brownTiles = new Rectangle[32];
@@ -131,6 +132,22 @@ public class ChessBoardModel {
         return false;
     }
 
+    /**
+     *
+     * @param selectedPiece
+     * @param row
+     * @param tile
+     * @return a Pair where getKey returns whether the spot is an available spot to move to, and getValue returns whether it is an attack piece (which is important because we need to then break;)
+     */
+    public static boolean isEnemy(ChessPiece selectedPiece, int row, int tile){
+        if (selectedPiece == ChessPiece.BLACK_PAWN || selectedPiece == ChessPiece.BLACK_BISHOP || selectedPiece == ChessPiece.BLACK_KNIGHT || selectedPiece == ChessPiece.BLACK_ROOK || selectedPiece == ChessPiece.BLACK_KING || selectedPiece == ChessPiece.BLACK_QUEEN){
+            if (isWhitePiece(row, tile)) return true;
+        }else{
+            if (isBlackPiece(row, tile)) return true;
+        }
+        return false;
+    }
+
     public Pane getCanvas() {
         return this.canvas;
     }
@@ -235,14 +252,12 @@ public class ChessBoardModel {
 
     }
 
-    public void drawPotentialMoveSpots(ArrayList<Pair<Integer, Integer>> potentialMoveSpots) {
+    public void drawPotentialMoveSpots(ChessPositionSet potentialMoveSpots) {
         //this is only responsible for drawing spot, not checking whther it can draw
 
-        //note .getKey() returns the row of the potentialMoveSpot
-        // .getValue() returns the tile of the potentialMoveSpot
-        for (Pair<Integer, Integer> e : potentialMoveSpots) {
-            int canvasXPosition = e.getValue() * 75;
-            int canvasYPosition = e.getKey() * 75;
+        for (com.presman.chess.ChessPieceLogic.Node e : potentialMoveSpots) {
+            int canvasXPosition = e.getTile() * 75;
+            int canvasYPosition = e.getRow() * 75;
 
             for (int i = 0; i < this.canvas.getChildren().size(); i++){
                 Node n = canvas.getChildren().get(i);

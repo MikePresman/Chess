@@ -18,9 +18,9 @@ public class GameModel {
     }
 
 
-    public static ArrayList<Pair<Integer, Integer>> getPotentialMoveSpots(ChessPiece[][] chessBoard, int row, int tile) {
+    public static ChessPositionSet getPotentialMoveSpots(ChessPiece[][] chessBoard, int row, int tile) {
         ChessPiece selectedPiece = chessBoard[row][tile];
-        ArrayList<Pair<Integer, Integer>> potentialMoveSpots = new ArrayList<>();
+        ChessPositionSet potentialMoveSpots = new ChessPositionSet();
 
         //Pawn
         if (selectedPiece == ChessPiece.WHITE_PAWN || selectedPiece == ChessPiece.BLACK_PAWN) {
@@ -28,6 +28,7 @@ public class GameModel {
             pawnMovement.verticalMovement(potentialMoveSpots, selectedPiece, row, tile);
             pawnMovement.uniqueMovement(potentialMoveSpots, selectedPiece, row, tile);
         }
+
 
         //Rook
         if (selectedPiece == ChessPiece.BLACK_ROOK || selectedPiece == ChessPiece.WHITE_ROOK) {
@@ -42,6 +43,7 @@ public class GameModel {
             knightMovement.uniqueMovement(potentialMoveSpots, selectedPiece, row, tile);
         }
 
+
         //Bishop
         if (selectedPiece == ChessPiece.BLACK_BISHOP || selectedPiece == ChessPiece.WHITE_BISHOP){
             BishopModel bishopMovement = new BishopModel();
@@ -55,6 +57,7 @@ public class GameModel {
             kingMovement.horizontalMovement(potentialMoveSpots, selectedPiece, row, tile);
             kingMovement.verticalMovement(potentialMoveSpots, selectedPiece, row, tile);
         }
+
 
         //Queen
         if (selectedPiece == ChessPiece.BLACK_QUEEN || selectedPiece == ChessPiece.WHITE_QUEEN) {
