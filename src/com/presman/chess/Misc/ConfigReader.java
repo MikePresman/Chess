@@ -7,8 +7,6 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class ConfigReader {
-
-
     public static void getConfigDetails(){
         try{
             File myObj = new File("src/config.txt");
@@ -17,7 +15,7 @@ public class ConfigReader {
                 String data = reader.nextLine().split(";")[0];
 
                 //key is property name, value is value of property
-                Main.configProperties.put(data.split("=")[0].trim(),data.split("=")[1].trim());
+                Main.configProperties.put(data.split("=")[0].trim(), data.split("=")[1].trim());
 
             }
             reader.close();

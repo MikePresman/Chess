@@ -1,5 +1,6 @@
 package com.presman.chess.ChessBoardHandler;
 import com.presman.chess.ChessPieceLogic.*;
+import com.presman.chess.Main;
 import javafx.util.Pair;
 import java.util.ArrayList;
 
@@ -11,10 +12,10 @@ enum Player {
 
 public class GameModel {
     public static boolean gameRunning = true;
-    public static Player currentPlayer = Player.WHITE;
+    public static Player currentPlayer;
+    public static boolean playerHasControl = false;
 
     public GameModel() {
-
     }
 
 

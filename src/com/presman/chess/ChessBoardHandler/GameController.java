@@ -2,6 +2,7 @@ package com.presman.chess.ChessBoardHandler;
 
 import com.presman.chess.ChessBoardHandler.Player;
 import com.presman.chess.ChessPieceLogic.Node;
+import com.presman.chess.Main;
 import javafx.scene.layout.Pane;
 
 
@@ -19,6 +20,15 @@ public class GameController {
     public GameController(Pane canvas) {
         this.board = new ChessBoardModel(canvas); //this will draw the board
         this.board.drawPiecesOnBoard(); //draw initial pieces
+
+        if (Main.singlePlayer){
+            GameModel.currentPlayer = Player.WHITE;
+        }else{
+            GameModel.currentPlayer = Main.server != null ? Player.WHITE : Player.BLACK;
+        }
+
+        if (GameModel.currentPlayer == Player.WHITE) GameModel.playerHasControl = true;
+
     }
 
 
@@ -26,6 +36,8 @@ public class GameController {
         if (!GameModel.gameRunning) {
             return;
         }
+
+        if (!GameModel.playerHasControl) return;
 
         //Moving Piece Check
         int tileClickedIndex = (int) (Math.floor(m.getX() / 75));
@@ -37,6 +49,13 @@ public class GameController {
                 int potentialTileIndex = e.getTile();
                 if (potentialRowIndex == rowClickedIndex && potentialTileIndex == tileClickedIndex && this.board.pieceSelected) {
                     handleMovingPiece(rowClickedIndex, tileClickedIndex);
+
+                    //tell other player that has been moved
+                    if (!Main.singlePlayer){
+
+                    }
+
+
                     return;
                 }
             }
@@ -74,7 +93,9 @@ public class GameController {
                 this.board.pieceSelected = false;
                 this.board.drawBoard(this.board.getCanvas());
                 this.board.redrawPieces();
-                GameModel.currentPlayer = GameModel.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
+
+                if (Main.singlePlayer)
+                    GameModel.currentPlayer = GameModel.currentPlayer == Player.WHITE ? Player.BLACK : Player.WHITE;
                 return;
             } else {
                 continue;

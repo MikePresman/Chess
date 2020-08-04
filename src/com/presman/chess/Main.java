@@ -18,8 +18,9 @@ import java.util.Map;
 
 public class Main extends Application {
     public static HashMap<String, String> configProperties = new HashMap<>();
-    Server server = null;
-    Client client = null;
+    public static Server server = null;
+    public static Client client = null;
+    public static boolean singlePlayer = false;
 
     public static void main(String[] args) {
         launch(args);
@@ -29,14 +30,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
+        ConfigReader.getConfigDetails();
+        determineGameMode();
+
         //init chessboard drawing
         Pane canvas = new Pane();
+
+
         GameController gameController = new GameController(canvas);
 
         //Need to parse through config file
         //If host set up ServerSocket, if not host set up Socket to connect to ServerSocket
-        ConfigReader.getConfigDetails();
-        determineGameMode();
 
 
 
@@ -58,16 +62,15 @@ public class Main extends Application {
     }
 
 
-public void determineGameMode(){
-    if (configProperties.get("HOST?").equals("true")) {
-        server = new Server();
-    } else if(configProperties.get("SINGLE_PLAYER").equals("true")){
-        return;
-    }else{
-        client = new Client();
+    public void determineGameMode() {
+        if (configProperties.get("SINGLE_PLAYER").equals("true")) {
+            singlePlayer = true;
+            return;
+        } else if (configProperties.get("HOST?").equals("true")) {
+                server = new Server();
+            } else {
+                client = new Client();
+            }
         }
     }
-
-}
-
 
