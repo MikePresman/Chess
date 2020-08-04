@@ -17,7 +17,8 @@ public class Client {
     private ObjectOutputStream objOut;
     private ObjectInputStream objIn;
 
-    private ChessBoardModel chessModel;
+    public ChessBoardModel chessModel;
+    public boolean done = false;
 
     public Client() {
         try {
@@ -43,7 +44,9 @@ public class Client {
                 if (recv.message.equals("Board")) {
                     System.out.println("RECIEVED");
                     ChessBoardModel.chessBoardLayout = (ChessPiece[][]) recv.obj;
-                    this.chessModel.redrawPieces();
+                    Platform.runLater(() -> {
+                        this.chessModel.redrawPieces();
+                    });
                     return;
                 }
             }
