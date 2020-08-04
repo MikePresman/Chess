@@ -30,23 +30,21 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
+        //get config
         ConfigReader.getConfigDetails();
         determineGameMode();
 
         //init chessboard drawing
         Pane canvas = new Pane();
-
-
         GameController gameController = new GameController(canvas);
-
-        //Need to parse through config file
-        //If host set up ServerSocket, if not host set up Socket to connect to ServerSocket
-
 
 
         //setting the init scene - can not resize the stage
         Scene scene = new Scene(canvas, 600, 600);
-        primaryStage.setTitle("Chess");
+        if (configProperties.get("HOST?").equals("true"))
+            primaryStage.setTitle("Chess : HOST");
+        else
+            primaryStage.setTitle("Chess : Client");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -1,5 +1,7 @@
 package com.presman.chess.Communication;
 
+import com.presman.chess.ChessBoardHandler.ChessBoardModel;
+import com.presman.chess.ChessBoardHandler.ChessPiece;
 import com.presman.chess.Main;
 
 import java.io.IOException;
@@ -17,18 +19,27 @@ public class Server
     private Socket client;
 
 
-    public Server(){
-        try{
+    public Server() {
+        try {
             server = new ServerSocket(Integer.parseInt(Main.configProperties.get("HOST_PORT")));
 
-            while (true){
+            while (true) {
                 client = server.accept();
                 System.out.println("Connection Received");
                 outputStream = new ObjectOutputStream(client.getOutputStream());
                 inStream = new ObjectInputStream(client.getInputStream());
                 if (client != null) break;
             }
-        }catch (IOException e){
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendBoard(ChessPiece[][] board){
+        try {
+            Packet<ChessPiece[][]> send = new Packet("Board", ChessBoardModel.getChessBoard());
+            this.outputStream.writeObject(send);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

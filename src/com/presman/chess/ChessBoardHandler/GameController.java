@@ -3,6 +3,7 @@ package com.presman.chess.ChessBoardHandler;
 import com.presman.chess.ChessBoardHandler.Player;
 import com.presman.chess.ChessPieceLogic.Node;
 import com.presman.chess.Main;
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 
 
@@ -25,8 +26,17 @@ public class GameController {
 
         if (GameModel.currentPlayer == Player.WHITE) GameModel.playerHasControl = true;
 
+        //ONLY IN DEBUG : remove after
+        GameModel.playerHasControl = true;
+
         this.board = new ChessBoardModel(canvas); //this will draw the board
         this.board.drawPiecesOnBoard(); //draw initial pieces
+
+        Main.client.setChessModel(this.board);
+
+        if (!GameModel.playerHasControl) {
+            Platform.runLater(() -> Main.client.getMove());
+        }
     }
 
 
@@ -50,7 +60,10 @@ public class GameController {
 
                     //tell other player that has been moved
                     if (!Main.singlePlayer){
-
+                        if (Main.server != null){
+                            Main.server.sendBoard(ChessBoardModel.getChessBoard());
+                            System.out.println("SENT");
+                        }
                     }
 
 

@@ -35,7 +35,7 @@ public class ChessBoardModel {
 
 
     //default for White player
-    private static ChessPiece[][] chessBoardLayout = {
+    public static ChessPiece[][] chessBoardLayout = {
             {ChessPiece.BLACK_ROOK, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_QUEEN, ChessPiece.BLACK_KING, ChessPiece.BLACK_BISHOP, ChessPiece.BLACK_KNIGHT, ChessPiece.BLACK_ROOK},
             {ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN, ChessPiece.BLACK_PAWN},
             {ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE, ChessPiece.NONE},
@@ -68,7 +68,6 @@ public class ChessBoardModel {
     public ChessBoardModel(Pane canvas)
     {
         this.canvas = canvas;
-        System.out.println(GameModel.currentPlayer);
         if (GameModel.currentPlayer == Player.BLACK)
             rotateImage180DegII();
 
