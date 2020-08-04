@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class Main extends Application {
     public static HashMap<String, String> configProperties = new HashMap<>();
-    public static Server server = null;
-    public static Client client = null;
+    public static Server server;
+    public static Client client;
     public static boolean singlePlayer = false;
 
     public static void main(String[] args) {
@@ -67,9 +67,9 @@ public class Main extends Application {
             singlePlayer = true;
             return;
         } else if (configProperties.get("HOST?").equals("true")) {
-                server = new Server();
+                Main.server = new Server();
             } else {
-                client = new Client();
+                Main.client = new Client();
             }
         }
     }

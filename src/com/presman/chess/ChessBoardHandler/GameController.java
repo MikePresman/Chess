@@ -18,17 +18,15 @@ public class GameController {
 
 
     public GameController(Pane canvas) {
-        this.board = new ChessBoardModel(canvas); //this will draw the board
-        this.board.drawPiecesOnBoard(); //draw initial pieces
-
-        if (Main.singlePlayer){
+        if (Main.singlePlayer)
             GameModel.currentPlayer = Player.WHITE;
-        }else{
+        else
             GameModel.currentPlayer = Main.server != null ? Player.WHITE : Player.BLACK;
-        }
 
         if (GameModel.currentPlayer == Player.WHITE) GameModel.playerHasControl = true;
 
+        this.board = new ChessBoardModel(canvas); //this will draw the board
+        this.board.drawPiecesOnBoard(); //draw initial pieces
     }
 
 

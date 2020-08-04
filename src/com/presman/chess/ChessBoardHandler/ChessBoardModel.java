@@ -1,6 +1,7 @@
 package com.presman.chess.ChessBoardHandler;
 
 import com.presman.chess.ChessPieceLogic.ChessPositionSet;
+import com.presman.chess.Main;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,7 @@ import javafx.util.Pair;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ChessBoardModel {
@@ -44,11 +46,32 @@ public class ChessBoardModel {
             {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
     };
 
+    public void rotateImage180DegII() {
+        for (int x = 0; x < chessBoardLayout.length / 2; x++) {
+
+            int y = chessBoardLayout.length - 1 - x;
+            for (int i = x; i < y; i++) {
+                swap(i, x,            y - i + x, y);
+                swap(x, y - i + x,    y, i);
+            }
+        }
+    }
+
+    public void swap(int x1, int y1, int x2, int y2) {
+        ChessPiece tmp;
+        tmp = chessBoardLayout[y1][x1];
+        chessBoardLayout[y1][x1] = chessBoardLayout[y2][x2];
+        chessBoardLayout[y2][x2] = tmp;
+    }
 
 
     public ChessBoardModel(Pane canvas)
     {
         this.canvas = canvas;
+        System.out.println(GameModel.currentPlayer);
+        if (GameModel.currentPlayer == Player.BLACK)
+            rotateImage180DegII();
+
         drawBoard(canvas);
     }
     public static ChessPiece[][] getChessBoard() {

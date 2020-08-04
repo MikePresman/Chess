@@ -1,7 +1,7 @@
-HOST? = true; //initalize this as true if you are the host, keep false if you are connecting to a host
+HOST? = true; //initalize this as true if you are the host, keep false if you are connecting to a host. Remember, one of you has to be host and one of you has to be client
 HOST_IP = 127.0.0.1;
 HOST_PORT = 9094;
-SINGLE_PLAYER = true;
+SINGLE_PLAYER = false;
 
 
 

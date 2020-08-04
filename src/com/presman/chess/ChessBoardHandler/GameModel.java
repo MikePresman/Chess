@@ -4,12 +4,6 @@ import com.presman.chess.Main;
 import javafx.util.Pair;
 import java.util.ArrayList;
 
-enum Player {
-    WHITE,
-    BLACK
-}
-
-
 public class GameModel {
     public static boolean gameRunning = true;
     public static Player currentPlayer;
