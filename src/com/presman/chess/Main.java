@@ -36,7 +36,7 @@ public class Main extends Application {
 
         //init chessboard drawing
         Pane canvas = new Pane();
-        GameController gameController = new GameController(canvas);
+
 
 
         //setting the init scene - can not resize the stage
@@ -49,8 +49,8 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        //make it run based on config file
-        //setup ServerSocket
+
+        GameController gameController = new GameController(canvas);
 
 
         //Event-driven responses

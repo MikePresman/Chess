@@ -2,6 +2,7 @@ package com.presman.chess.Communication;
 
 import com.presman.chess.ChessBoardHandler.ChessBoardModel;
 import com.presman.chess.ChessBoardHandler.ChessPiece;
+import com.presman.chess.ChessBoardHandler.GameModel;
 import com.presman.chess.Main;
 import javafx.application.Platform;
 
@@ -41,7 +42,9 @@ public class Client {
                 if (recv.message.equals("Board")) {
                     ChessBoardModel.chessBoardLayout = (ChessPiece[][]) recv.obj;
                     Platform.runLater(() -> {
+                        this.chessModel.flipImage();
                         this.chessModel.redrawPieces();
+                        GameModel.playerHasControl = true;
                     });
                     return;
                 }
