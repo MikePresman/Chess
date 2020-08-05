@@ -32,7 +32,8 @@ public class GameController {
         this.board = new ChessBoardModel(canvas); //this will draw the board
         this.board.drawPiecesOnBoard(); //draw initial pieces
 
-        //Main.client.setChessModel(this.board); this breaks something
+        if (Main.client != null)
+            Main.client.setChessModel(this.board);
 
         if (!GameModel.playerHasControl) {
             Platform.runLater(() -> Main.client.getMove());
