@@ -26,8 +26,6 @@ public class GameController {
 
         if (GameModel.currentPlayer == Player.WHITE) GameModel.playerHasControl = true;
 
-        //ONLY IN DEBUG : remove after
-        GameModel.playerHasControl = true;
 
         this.board = new ChessBoardModel(canvas); //this will draw the board
         this.board.drawPiecesOnBoard(); //draw initial pieces
