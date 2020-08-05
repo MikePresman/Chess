@@ -37,7 +37,7 @@ public class GameController {
         if (Main.server != null)
             Main.server.setChessModel(this.board);
 
-        if (!GameModel.playerHasControl) {
+        if (!GameModel.playerHasControl && !Main.singlePlayer) {
             new Thread(() -> Main.client.getMove()).start();
         }
     }
