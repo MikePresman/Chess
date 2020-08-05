@@ -18,7 +18,6 @@ public class Client {
     private ObjectInputStream objIn;
 
     public ChessBoardModel chessModel;
-    public boolean done = false;
 
     public Client() {
         try {
@@ -36,13 +35,10 @@ public class Client {
     }
 
     public void getMove() {
-        System.out.println("am i herEE??E?");
         try {
             while (true) {
                 Packet recv = (Packet) objIn.readObject();
-                System.out.println(recv.message);
                 if (recv.message.equals("Board")) {
-                    System.out.println("RECIEVED");
                     ChessBoardModel.chessBoardLayout = (ChessPiece[][]) recv.obj;
                     Platform.runLater(() -> {
                         this.chessModel.redrawPieces();
@@ -54,5 +50,15 @@ public class Client {
             e.printStackTrace();
         }
     }
+
+    public void sendBoard(ChessPiece[][] board){
+        try {
+            Packet<ChessPiece[][]> send = new Packet("Board", ChessBoardModel.getChessBoard());
+            this.objOut.writeObject(send);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

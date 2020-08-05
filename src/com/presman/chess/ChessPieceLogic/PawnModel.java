@@ -14,7 +14,7 @@ public class PawnModel {
 
     public void verticalMovement(ChessPositionSet potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
         //HANDLING MOVEMENT UP THE BOARD - NEED TO HANDLE SPECIAL MOVEMENT BACKWARDS WHEN KINGED? IDK READ ABOUT IT
-
+/*
         if (!Main.singlePlayer && GameModel.currentPlayer == Player.BLACK){
 
             if (selectedPiece == ChessPiece.WHITE_PAWN && row + 1 <= 7 && ChessBoardModel.isEmptyTile(row+1, tile)) {
@@ -38,7 +38,7 @@ public class PawnModel {
             if (selectedPiece == ChessPiece.BLACK_PAWN && row - 1 >= 0 && tile - 1 >= 0 && ChessBoardModel.isBlackPiece(row - 1, tile - 1)) {
                 potentialMoveSpots.add(row - 1, tile - 1);
             }
-        }
+        }*/
 
 
         if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && ChessBoardModel.isEmptyTile(row+1, tile)) {

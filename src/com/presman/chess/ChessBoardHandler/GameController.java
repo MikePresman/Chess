@@ -34,9 +34,11 @@ public class GameController {
 
         if (Main.client != null)
             Main.client.setChessModel(this.board);
+        if (Main.server != null)
+            Main.server.setChessModel(this.board);
 
         if (!GameModel.playerHasControl) {
-            Platform.runLater(() -> Main.client.getMove());
+            new Thread(() -> Main.client.getMove()).start();
         }
     }
 
@@ -63,7 +65,13 @@ public class GameController {
                     if (!Main.singlePlayer){
                         if (Main.server != null){
                             Main.server.sendBoard(ChessBoardModel.getChessBoard());
-                            System.out.println("SENT");
+                            GameModel.playerHasControl = false;
+                            new Thread(() -> Main.server.getMove()).start();
+                        }
+                        if (Main.client != null){
+                            Main.client.sendBoard(ChessBoardModel.getChessBoard());
+                            GameModel.playerHasControl = false;
+                            new Thread(() -> Main.client.getMove()).start();
                         }
                     }
 

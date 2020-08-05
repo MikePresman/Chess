@@ -46,22 +46,14 @@ public class ChessBoardModel {
             {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
     };
 
-    public void rotateImage180DegII() {
-        for (int x = 0; x < chessBoardLayout.length / 2; x++) {
-
-            int y = chessBoardLayout.length - 1 - x;
-            for (int i = x; i < y; i++) {
-                swap(i, x,            y - i + x, y);
-                swap(x, y - i + x,    y, i);
+    public void flipImage(){
+        for (int i = 0; i < chessBoardLayout.length / 2; i++){
+            for (int j = 0; j < chessBoardLayout[i].length; j++){
+                ChessPiece temp = chessBoardLayout[i][j];
+                chessBoardLayout[i][j] = chessBoardLayout[chessBoardLayout.length - 1 - i][j];
+                chessBoardLayout[chessBoardLayout.length - 1 - i][j] = temp;
             }
         }
-    }
-
-    public void swap(int x1, int y1, int x2, int y2) {
-        ChessPiece tmp;
-        tmp = chessBoardLayout[y1][x1];
-        chessBoardLayout[y1][x1] = chessBoardLayout[y2][x2];
-        chessBoardLayout[y2][x2] = tmp;
     }
 
 
@@ -69,7 +61,7 @@ public class ChessBoardModel {
     {
         this.canvas = canvas;
         if (GameModel.currentPlayer == Player.BLACK)
-            rotateImage180DegII();
+            flipImage();
 
         drawBoard(canvas);
     }
