@@ -46,7 +46,7 @@ public class ChessBoardModel {
             {ChessPiece.WHITE_ROOK, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_QUEEN, ChessPiece.WHITE_KING, ChessPiece.WHITE_BISHOP, ChessPiece.WHITE_KNIGHT, ChessPiece.WHITE_ROOK}
     };
 
-    public void flipImage(){
+    public static void flipImage(){
         for (int i = 0; i < chessBoardLayout.length / 2; i++){
             for (int j = 0; j < chessBoardLayout[i].length; j++){
                 ChessPiece temp = chessBoardLayout[i][j];

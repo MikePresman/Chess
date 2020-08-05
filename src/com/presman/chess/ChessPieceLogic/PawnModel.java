@@ -16,48 +16,63 @@ public class PawnModel {
         //HANDLING MOVEMENT UP THE BOARD - NEED TO HANDLE SPECIAL MOVEMENT BACKWARDS WHEN KINGED? IDK READ ABOUT IT
 
         if (!Main.singlePlayer && GameModel.currentPlayer == Player.BLACK){
-
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row + 1 <= 7 && ChessBoardModel.isEmptyTile(row+1, tile)) {
+                potentialMoveSpots.add(row+1, tile);
+            }
             if (selectedPiece == ChessPiece.BLACK_PAWN && row - 1 >= 0  && ChessBoardModel.isEmptyTile(row-1, tile)){
                 potentialMoveSpots.add(row -1, tile);
             }
 
+            //HANDLING POTENTIAL ATTACK
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isBlackPiece(row + 1, tile + 1)) {
+                potentialMoveSpots.add(row +1, tile + 1);
+            }
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isBlackPiece(row+1, tile - 1)) {
+                potentialMoveSpots.add(row + 1, tile - 1);
+            }
             if (selectedPiece == ChessPiece.BLACK_PAWN && row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isWhitePiece(row -1, tile + 1)) {
                 potentialMoveSpots.add(row - 1, tile + 1);
             }
             if (selectedPiece == ChessPiece.BLACK_PAWN && row - 1 >= 0 && tile - 1 >= 0 && ChessBoardModel.isWhitePiece(row - 1, tile - 1)) {
                 potentialMoveSpots.add(row - 1, tile - 1);
             }
+
+
+        }else{
+            if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && ChessBoardModel.isEmptyTile(row+1, tile)) {
+                potentialMoveSpots.add(row+1, tile);
+            }
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0  && ChessBoardModel.isEmptyTile(row-1, tile)){
+                potentialMoveSpots.add(row -1, tile);
+            }
+
+            //HANDLING POTENTIAL ATTACK
+            if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isWhitePiece(row + 1, tile + 1)) {
+                potentialMoveSpots.add(row +1, tile + 1);
+            }
+            if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isWhitePiece(row+1, tile - 1)) {
+                potentialMoveSpots.add(row + 1, tile - 1);
+            }
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isBlackPiece(row -1, tile + 1)) {
+                potentialMoveSpots.add(row - 1, tile + 1);
+            }
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile - 1 >= 0 && ChessBoardModel.isBlackPiece(row - 1, tile - 1)) {
+                potentialMoveSpots.add(row - 1, tile - 1);
+            }
         }
 
 
-        if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && ChessBoardModel.isEmptyTile(row+1, tile)) {
-            potentialMoveSpots.add(row+1, tile);
-        }
-        if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0  && ChessBoardModel.isEmptyTile(row-1, tile)){
-            potentialMoveSpots.add(row -1, tile);
-        }
 
 
-        //HANDLING POTENTIAL ATTACK
-        if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && tile + 1 <= 7 && ChessBoardModel.isWhitePiece(row + 1, tile + 1)) {
-            potentialMoveSpots.add(row +1, tile + 1);
-        }
-        if (selectedPiece == ChessPiece.BLACK_PAWN && row + 1 <= 7 && tile - 1 >= 0 && ChessBoardModel.isWhitePiece(row+1, tile - 1)) {
-            potentialMoveSpots.add(row + 1, tile - 1);
-        }
-        if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile + 1 <= 7 && ChessBoardModel.isBlackPiece(row -1, tile + 1)) {
-            potentialMoveSpots.add(row - 1, tile + 1);
-        }
-        if (selectedPiece == ChessPiece.WHITE_PAWN && row - 1 >= 0 && tile - 1 >= 0 && ChessBoardModel.isBlackPiece(row - 1, tile - 1)) {
-            potentialMoveSpots.add(row - 1, tile - 1);
-        }
+
     }
 
 
 
 
     public void uniqueMovement(ChessPositionSet potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
-        if (!Main.singlePlayer && GameModel.currentPlayer == Player.BLACK) {
+        if (!Main.singlePlayer && GameModel.currentPlayer == Player.BLACK){
+
             if (selectedPiece == ChessPiece.WHITE_PAWN && row + 2 <= 7 && ChessBoardModel.isEmptyTile(row + 2, tile) && ChessBoardModel.isEmptyTile(row + 1, tile) && row == 1) {
                 potentialMoveSpots.add(row + 2, tile);
             }
@@ -65,14 +80,15 @@ public class PawnModel {
             if (selectedPiece == ChessPiece.BLACK_PAWN && row - 2 >= 0 && ChessBoardModel.isEmptyTile(row - 2, tile) && ChessBoardModel.isEmptyTile(row - 1, tile) && row == 6) {
                 potentialMoveSpots.add(row - 2, tile);
             }
-        }
+        }else {
 
-        if (selectedPiece == ChessPiece.BLACK_PAWN && row + 2 <= 7 && ChessBoardModel.isEmptyTile(row + 2, tile) && ChessBoardModel.isEmptyTile(row + 1, tile) && row == 1) {
-            potentialMoveSpots.add(row + 2, tile);
-        }
+            if (selectedPiece == ChessPiece.BLACK_PAWN && row + 2 <= 7 && ChessBoardModel.isEmptyTile(row + 2, tile) && ChessBoardModel.isEmptyTile(row + 1, tile) && row == 1) {
+                potentialMoveSpots.add(row + 2, tile);
+            }
 
-        if (selectedPiece == ChessPiece.WHITE_PAWN && row - 2 >= 0 && ChessBoardModel.isEmptyTile(row - 2, tile) && ChessBoardModel.isEmptyTile(row - 1, tile) && row == 6) {
-            potentialMoveSpots.add(row - 2, tile);
+            if (selectedPiece == ChessPiece.WHITE_PAWN && row - 2 >= 0 && ChessBoardModel.isEmptyTile(row - 2, tile) && ChessBoardModel.isEmptyTile(row - 1, tile) && row == 6) {
+                potentialMoveSpots.add(row - 2, tile);
+            }
         }
     }
 }
