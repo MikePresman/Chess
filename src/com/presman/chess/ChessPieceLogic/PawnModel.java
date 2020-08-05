@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class PawnModel {
 
-
+    //TODO : FIX BECAUSE EVERYTHING IS FLIPPED FOR BLACK PLAYER
     public void verticalMovement(ChessPositionSet potentialMoveSpots, ChessPiece selectedPiece, int row, int tile) {
         //HANDLING MOVEMENT UP THE BOARD - NEED TO HANDLE SPECIAL MOVEMENT BACKWARDS WHEN KINGED? IDK READ ABOUT IT
 
